@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Cleophis — a store for AI models that run entirely on your own computer. Buy a model, download it once, chat forever. Offline, private, $0 per token."/>
+<title>Cleophis — local AI, yours</title>
+<style>
+  :root { --bg:#0E1218; --panel:#151B24; --text:#E6E9EF; --muted:#8B95A5; --teal:#35D0BA; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:var(--bg); color:var(--text); min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    display:flex; flex-direction:column; align-items:center;
+  }
+  main { max-width:44rem; padding:12vh 1.5rem 4rem; text-align:center; flex:1; }
+  .mark { font-size:1.05rem; letter-spacing:.35em; text-transform:uppercase; color:var(--teal); margin-bottom:2.2rem; }
+  h1 { font-size:clamp(2rem, 5.5vw, 3.1rem); line-height:1.15; margin-bottom:1.1rem; font-weight:700; }
+  h1 em { font-style:normal; color:var(--teal); }
+  .sub { color:var(--muted); font-size:1.12rem; line-height:1.6; max-width:36rem; margin:0 auto 2.6rem; }
+  .props { display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); gap:.8rem; margin-bottom:2.8rem; }
+  .prop { background:var(--panel); border:1px solid #212a36; border-radius:12px; padding:1rem .9rem; }
+  .prop b { display:block; font-size:.98rem; margin-bottom:.3rem; }
+  .prop span { color:var(--muted); font-size:.86rem; line-height:1.45; }
+  .cta { display:inline-block; background:var(--teal); color:#08211D; font-weight:600; padding:.85rem 1.7rem; border-radius:10px; font-size:1.02rem; cursor:default; }
+  .cta small { display:block; font-weight:400; font-size:.78rem; margin-top:.15rem; opacity:.75; }
+  footer { color:var(--muted); font-size:.8rem; padding:1.4rem; text-align:center; line-height:1.6; }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark">Cleophis</div>
+  <h1>AI models that live on <em>your</em> computer.</h1>
+  <p class="sub">A store, a library, and a chat window in one desktop app.
+  Pick a model, download it once, and talk to it forever — no cloud, no
+  per-token bills, no data leaving your machine. It works in airplane mode.</p>
+  <div class="props">
+    <div class="prop"><b>Runs on your device</b><span>Models execute locally on your own GPU or CPU — nothing is sent anywhere.</span></div>
+    <div class="prop"><b>$0 per token</b><span>Pay for the model, not the meter. Chat as much as you want.</span></div>
+    <div class="prop"><b>Private by physics</b><span>Offline means offline: your conversations never touch a server.</span></div>
+    <div class="prop"><b>Expert models</b><span>Focused, subject-tuned models — tutors and references, not one-size-fits-all.</span></div>
+  </div>
+  <span class="cta">Coming soon to Windows<small>macOS to follow</small></span>
+</main>
+<footer>&copy; 2026 Cleophis &middot; Built with Llama</footer>
+</body>
+</html>
