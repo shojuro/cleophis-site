@@ -696,11 +696,40 @@ button {
 
 /* ---------- investors ---------- */
 
-.investors {
+.investors,
+.darksec {
   background: var(--ink);
   color: var(--white);
   position: relative;
   overflow: hidden;
+}
+
+.darksec::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(192, 26, 103, 0.16), transparent 65%);
+  pointer-events: none;
+}
+
+.darksec .headline {
+  color: var(--white);
+}
+
+.darksec .sub {
+  color: var(--muted-lt);
+}
+
+.darksec .caption {
+  color: var(--muted);
+}
+
+.darksec .grid4 > div,
+.darksec .inv-chip {
+  height: 100%;
 }
 
 .investors::before {

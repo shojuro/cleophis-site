@@ -201,6 +201,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ================= YOUR STUDY SPACE ================= */}
+      <section className="section darksec" id="library">
+        <div className="container">
+          <Reveal>
+            <div className="kicker">
+              <span className="diamond" aria-hidden="true" />
+              Your study space
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="headline">Their books, their notes, their tutor.</h2>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="sub">
+              Cleophis isn’t just a chat window — it’s a private study space your family fills with
+              its own materials. And like everything else, it all stays on the device.
+            </p>
+          </Reveal>
+
+          <div className="grid4">
+            <Reveal delay={0}>
+              <div className="inv-chip">
+                <div className="inv-chip-title">Teach it from your own books</div>
+                <p className="inv-chip-desc">
+                  Turn your materials into knowledge packs. The tutor answers from them and cites
+                  its sources — or says honestly when the answer isn’t in there.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={110}>
+              <div className="inv-chip">
+                <div className="inv-chip-title">Bring your files</div>
+                <p className="inv-chip-desc">
+                  PDFs, Word docs, EPUBs, text and notes — if it’s readable, it can join the
+                  library.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={220}>
+              <div className="inv-chip">
+                <div className="inv-chip-title">Private folders</div>
+                <p className="inv-chip-desc">
+                  Keep chats organized by kid, class, or project — with search, and archive for
+                  when things pile up.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={330}>
+              <div className="inv-chip">
+                <div className="inv-chip-title">Your chats, yours to keep</div>
+                <p className="inv-chip-desc">
+                  Export any conversation whenever you like. Nothing is locked in — because nothing
+                  ever left your device.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ================= SUBJECTS ================= */}
       <section className="section privacy" id="subjects">
         <div className="container">
