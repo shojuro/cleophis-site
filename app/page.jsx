@@ -2,6 +2,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
 import EmailCapture from '../components/EmailCapture';
+import HeroChat from '../components/HeroChat';
 
 const NAV_LINKS = [
   ['#why', 'Why Cleophis'],
@@ -100,28 +101,7 @@ export default function Home() {
           </div>
 
           <Reveal delay={250}>
-            <div className="app-window" aria-hidden="true">
-              <div className="app-bar">
-                <span className="app-dot" />
-                <span className="app-dot" />
-                <span className="app-dot" />
-                <span className="app-title">Cleophis — Algebra II</span>
-                <span className="offline-badge">
-                  <span className="offline-dot" />
-                  Offline · on this device
-                </span>
-              </div>
-              <div className="chat">
-                <div className="msg msg-student">I don’t get factoring… x² + 5x + 6?</div>
-                <div className="msg msg-tutor">
-                  No problem — one step at a time. We need two numbers that multiply to 6 and add
-                  to 5. Try 2 and 3…
-                  <br />
-                  So: <strong>(x + 2)(x + 3)</strong>. Want to try the next one together?
-                </div>
-                <div className="msg msg-student">yes!</div>
-              </div>
-            </div>
+            <HeroChat />
           </Reveal>
         </div>
       </section>
