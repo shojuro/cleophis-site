@@ -1,8 +1,9 @@
-// Beta signup endpoint.
+// Beta / waitlist signup endpoint.
 //
-// Currently a stub: it validates the payload and returns success, but does not
-// store the signup anywhere. Before launch, connect it to a destination —
-// see README.md ("Wiring up the beta form") for options.
+// Stores signups in Supabase when SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY
+// are set (see README "Wiring up email collection"). Without them it logs
+// to the server console only — fine for local dev, but wire Supabase
+// before driving real traffic or signups only live in ephemeral logs.
 
 export async function POST(request) {
   let data;
@@ -12,18 +13,45 @@ export async function POST(request) {
     return Response.json({ ok: false, error: 'Invalid JSON' }, { status: 400 });
   }
 
-  const email = typeof data?.email === 'string' ? data.email.trim() : '';
-  if (!email || !email.includes('@')) {
+  const email = typeof data?.email === 'string' ? data.email.trim().toLowerCase() : '';
+  if (!email || !email.includes('@') || email.length > 320) {
     return Response.json({ ok: false, error: 'Valid email required' }, { status: 400 });
   }
 
-  // TODO: persist the signup (Resend, Formspree, Airtable, Vercel KV, etc.)
-  console.log('[beta signup]', {
-    name: data.name ?? '',
+  const row = {
+    name: typeof data?.name === 'string' ? data.name.trim().slice(0, 200) : null,
     email,
-    role: data.role ?? '',
-    at: new Date().toISOString(),
-  });
+    role: typeof data?.role === 'string' ? data.role.trim().slice(0, 100) : null,
+    source: 'website',
+  };
+
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (url && key) {
+    try {
+      const res = await fetch(`${url}/rest/v1/signups?on_conflict=email`, {
+        method: 'POST',
+        headers: {
+          apikey: key,
+          Authorization: `Bearer ${key}`,
+          'Content-Type': 'application/json',
+          Prefer: 'resolution=ignore-duplicates',
+        },
+        body: JSON.stringify(row),
+      });
+      // 409 = duplicate email without ignore-duplicates; treat as success.
+      if (!res.ok && res.status !== 409) {
+        console.error('[beta signup] Supabase error', res.status, await res.text());
+        return Response.json({ ok: false, error: 'Storage error' }, { status: 502 });
+      }
+    } catch (err) {
+      console.error('[beta signup] Supabase unreachable', err);
+      return Response.json({ ok: false, error: 'Storage error' }, { status: 502 });
+    }
+  } else {
+    console.log('[beta signup] (no Supabase configured)', row);
+  }
 
   return Response.json({ ok: true });
 }

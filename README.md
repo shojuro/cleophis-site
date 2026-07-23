@@ -24,16 +24,34 @@ npm run build      # production build check
 
 Alternatively, deploy from the CLI without GitHub: `npx vercel` in this folder.
 
-## Wiring up the beta form
+## Wiring up email collection (Supabase)
 
-`app/api/beta/route.js` currently validates and logs signups but does not store them.
-Pick one before launch:
+`app/api/beta/route.js` stores signups in Supabase when configured, and falls back to
+console-logging when not (fine locally; don't ship real traffic that way).
 
-- **Resend** (email you each signup): `npm i resend`, add `RESEND_API_KEY` env var in Vercel,
-  send a mail in the route handler.
-- **Formspree / Basin**: skip the API route and point the form action at their endpoint.
-- **Airtable / Google Sheets**: POST to their API from the route handler.
-- **Vercel KV / Postgres**: store rows directly.
+1. Create a project at [supabase.com](https://supabase.com) (free tier is plenty).
+2. In the SQL editor, run:
+
+   ```sql
+   create table public.signups (
+     id uuid primary key default gen_random_uuid(),
+     created_at timestamptz not null default now(),
+     name text,
+     email text not null unique,
+     role text,
+     source text
+   );
+   -- RLS on, no policies: the anon key can do nothing; the service key (server-only) bypasses RLS.
+   alter table public.signups enable row level security;
+   ```
+
+3. Project Settings → API: copy the **Project URL** and the **service_role** key.
+4. In Vercel: Project → Settings → Environment Variables → add
+   `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Production), then redeploy.
+   Locally, put them in `.env.local` (see `.env.example`).
+
+Signups land in the `signups` table — browse or export CSV from the Supabase dashboard.
+Duplicate emails are silently ignored (unique constraint + ignore-duplicates).
 
 ## Placeholders to replace
 
