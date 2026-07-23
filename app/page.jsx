@@ -172,7 +172,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <h2 className="headline">The tutor is downloaded, not rented.</h2>
+              <h2 className="headline">Downloaded, not streamed.</h2>
             </Reveal>
             <Reveal delay={200}>
               <p className="sub">

@@ -8,7 +8,7 @@ export default function Footer() {
           </span>
           Cleophis
         </a>
-        <p className="footer-tag">Private. Offline. Affordable.</p>
+        <p className="footer-tag">Downloaded, not streamed.</p>
         <nav className="footer-links" aria-label="Footer">
           <a href="/#download">Download</a>
           <a href="/investors">For investors</a>

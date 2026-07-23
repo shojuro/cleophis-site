@@ -183,7 +183,8 @@ export default function InvestorsPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="sub">
-              A library of fine-tuned, on-device AI models — starting with a full academic tutor.
+              A library of fine-tuned, on-device AI models — downloaded, not streamed — starting
+              with a full academic tutor.
             </p>
           </Reveal>
 

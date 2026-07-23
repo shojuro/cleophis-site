@@ -18,7 +18,7 @@ export const metadata = {
   metadataBase: new URL('https://www.cleophis.com'),
   title: 'Cleophis — A Private Tutor That Lives on Your Device',
   description:
-    'A patient AI tutor for your kid that runs on your device. Sign in once — tutoring works fully offline, and every conversation stays at home. $10/month.',
+    'A patient AI tutor for your kid — downloaded, not streamed. Sign in once; tutoring works fully offline, and every conversation stays on your device. $10/month.',
   openGraph: {
     title: 'Cleophis — A Private Tutor That Lives on Your Device',
     description:
