@@ -301,7 +301,7 @@ export default function Home() {
       </section>
 
       {/* ================= PRICING ================= */}
-      <section className="section" id="pricing">
+      <section className="section pricing-sec" id="pricing">
         <div className="container">
           <Reveal>
             <div className="kicker">
