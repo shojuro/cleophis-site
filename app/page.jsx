@@ -12,7 +12,12 @@ const NAV_LINKS = [
   ['/investors', 'Investors'],
 ];
 
+// When the installer is ready: drop it at public/downloads/CleophisSetup.msi,
+// set MSI_READY = true, and the site reverts to direct-download buttons.
+const MSI_READY = false;
 const MSI_HREF = '/downloads/CleophisSetup.msi';
+const CTA_HREF = MSI_READY ? MSI_HREF : '#download';
+const CTA_LABEL = MSI_READY ? 'Download for Windows' : 'Get early access';
 
 const TRIO = [
   {
@@ -59,7 +64,7 @@ const FAQ = [
 export default function Home() {
   return (
     <main id="top">
-      <Nav links={NAV_LINKS} cta={{ href: '#download', label: 'Download' }} />
+      <Nav links={NAV_LINKS} cta={{ href: CTA_HREF, label: MSI_READY ? 'Download' : 'Get early access' }} />
 
       {/* ================= HERO ================= */}
       <section className="hero">
@@ -86,9 +91,9 @@ export default function Home() {
             </Reveal>
             <Reveal delay={300}>
               <div className="hero-ctas">
-                <a href={MSI_HREF} className="btn btn-primary" download>
-                  Download for Windows
-                  <span className="arr" aria-hidden="true">↓</span>
+                <a href={CTA_HREF} className="btn btn-primary" download={MSI_READY ? true : undefined}>
+                  {CTA_LABEL}
+                  <span className="arr" aria-hidden="true">{MSI_READY ? '↓' : '→'}</span>
                 </a>
                 <a href="#why" className="btn btn-ghost">
                   Why families choose it
@@ -96,7 +101,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={400}>
-              <p className="dl-note">.msi installer · PCs with 4 GB of memory or more · Android on the way</p>
+              <p className="dl-note">For Windows PCs with 4 GB of memory or more · Android on the way</p>
             </Reveal>
           </div>
 
@@ -322,11 +327,11 @@ export default function Home() {
                 <li>Nothing leaves your device</li>
                 <li>Cancel anytime</li>
               </ul>
-              <a href={MSI_HREF} className="btn btn-primary" download>
-                Download for Windows
-                <span className="arr" aria-hidden="true">↓</span>
+              <a href={CTA_HREF} className="btn btn-primary" download={MSI_READY ? true : undefined}>
+                {CTA_LABEL}
+                <span className="arr" aria-hidden="true">{MSI_READY ? '↓' : '→'}</span>
               </a>
-              <p className="dl-note">.msi installer · free to install, subscribe in-app</p>
+              <p className="dl-note">Free to install, subscribe in-app</p>
             </div>
           </Reveal>
         </div>
@@ -370,17 +375,21 @@ export default function Home() {
           <Reveal delay={150}>
             <p className="band-sub">Private. Offline. $10 a month. Installed in a minute.</p>
           </Reveal>
-          <Reveal delay={250}>
-            <div className="band-ctas">
-              <a href={MSI_HREF} className="btn btn-primary" download>
-                Download for Windows
-                <span className="arr" aria-hidden="true">↓</span>
-              </a>
-            </div>
-          </Reveal>
-          <Reveal delay={350}>
+          {MSI_READY && (
+            <Reveal delay={250}>
+              <div className="band-ctas">
+                <a href={MSI_HREF} className="btn btn-primary" download>
+                  Download for Windows
+                  <span className="arr" aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </Reveal>
+          )}
+          <Reveal delay={MSI_READY ? 350 : 250}>
             <p className="band-capture-lead">
-              Not on Windows? Leave your email and we’ll tell you when Cleophis reaches your device.
+              {MSI_READY
+                ? 'Not on Windows? Leave your email and we’ll tell you when Cleophis reaches your device.'
+                : 'The Windows download opens soon. Leave your email and we’ll send it to you the moment it’s ready.'}
             </p>
             <EmailCapture />
           </Reveal>
