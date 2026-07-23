@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function Reveal({ children, delay = 0, className = '' }) {
+// variant: 'up' (default) | 'blur' | 'left' | 'right' | 'zoom'
+export default function Reveal({ children, delay = 0, variant = 'up', className = '' }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -25,8 +26,14 @@ export default function Reveal({ children, delay = 0, className = '' }) {
     return () => io.disconnect();
   }, []);
 
+  const variantClass = variant !== 'up' ? `reveal-${variant}` : '';
+
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div
+      ref={ref}
+      className={`reveal ${variantClass} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       {children}
     </div>
   );

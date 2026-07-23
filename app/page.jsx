@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
 import EmailCapture from '../components/EmailCapture';
 import HeroChat from '../components/HeroChat';
+import ScrollFx from '../components/ScrollFx';
 
 const NAV_LINKS = [
   ['#why', 'Why Cleophis'],
@@ -64,6 +65,7 @@ const FAQ = [
 export default function Home() {
   return (
     <main id="top">
+      <ScrollFx />
       <Nav links={NAV_LINKS} cta={{ href: CTA_HREF, label: MSI_READY ? 'Download' : 'Get early access' }} />
 
       {/* ================= HERO ================= */}
@@ -105,7 +107,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <Reveal delay={250}>
+          <Reveal delay={250} variant="zoom">
             <HeroChat />
           </Reveal>
         </div>
@@ -120,13 +122,13 @@ export default function Home() {
               Why Cleophis
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} variant="blur">
             <h2 className="headline">Gentle help, whenever homework happens.</h2>
           </Reveal>
 
           <div className="trio">
             {TRIO.map((t, i) => (
-              <Reveal key={t.title} delay={i * 120}>
+              <Reveal key={t.title} delay={i * 120} variant="zoom">
                 <div className="trio-item">
                   <span className="diamond" aria-hidden="true" />
                   <h3>{t.title}</h3>
@@ -147,7 +149,7 @@ export default function Home() {
               Privacy
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} variant="blur">
             <h2 className="headline">What happens at home, stays home.</h2>
           </Reveal>
           <Reveal delay={200}>
@@ -170,16 +172,16 @@ export default function Home() {
       <section className="section" id="local">
         <div className="container explain-grid">
           <div>
-            <Reveal>
+            <Reveal variant="left">
               <div className="kicker">
                 <span className="diamond" aria-hidden="true" />
                 On your device
               </div>
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal delay={100} variant="left">
               <h2 className="headline">Downloaded, not streamed.</h2>
             </Reveal>
-            <Reveal delay={200}>
+            <Reveal delay={200} variant="left">
               <p className="sub">
                 Most AI tutors live in a data center — your child reaches them through the
                 internet, and their questions travel with them. Cleophis works the way software
@@ -190,13 +192,13 @@ export default function Home() {
             </Reveal>
           </div>
           <div className="explain-cards">
-            <Reveal delay={200}>
+            <Reveal delay={200} variant="right">
               <div className="card explain-card">
                 <div className="explain-label">Cloud AI</div>
                 <p className="card-desc">Questions travel to someone else’s computer.</p>
               </div>
             </Reveal>
-            <Reveal delay={320}>
+            <Reveal delay={320} variant="right">
               <div className="card explain-card explain-card-us">
                 <div className="explain-label explain-label-us">Cleophis</div>
                 <p className="card-desc">The tutor lives on yours.</p>
@@ -215,7 +217,7 @@ export default function Home() {
               Your study space
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} variant="blur">
             <h2 className="headline">Their books, their notes, their tutor.</h2>
           </Reveal>
           <Reveal delay={200}>
@@ -226,7 +228,7 @@ export default function Home() {
           </Reveal>
 
           <div className="grid4">
-            <Reveal delay={0}>
+            <Reveal delay={0} variant="zoom">
               <div className="inv-chip">
                 <div className="inv-chip-title">Teach it from your own books</div>
                 <p className="inv-chip-desc">
@@ -235,7 +237,7 @@ export default function Home() {
                 </p>
               </div>
             </Reveal>
-            <Reveal delay={110}>
+            <Reveal delay={110} variant="zoom">
               <div className="inv-chip">
                 <div className="inv-chip-title">Bring your files</div>
                 <p className="inv-chip-desc">
@@ -244,7 +246,7 @@ export default function Home() {
                 </p>
               </div>
             </Reveal>
-            <Reveal delay={220}>
+            <Reveal delay={220} variant="zoom">
               <div className="inv-chip">
                 <div className="inv-chip-title">Private folders</div>
                 <p className="inv-chip-desc">
@@ -253,7 +255,7 @@ export default function Home() {
                 </p>
               </div>
             </Reveal>
-            <Reveal delay={330}>
+            <Reveal delay={330} variant="zoom">
               <div className="inv-chip">
                 <div className="inv-chip-title">Your chats, yours to keep</div>
                 <p className="inv-chip-desc">
@@ -275,7 +277,7 @@ export default function Home() {
               Subjects
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} variant="blur">
             <h2 className="headline">Built subject by subject — on purpose.</h2>
           </Reveal>
           <Reveal delay={200}>
@@ -307,11 +309,11 @@ export default function Home() {
               Pricing
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} variant="blur">
             <h2 className="headline">Tutoring, without the tutoring bill.</h2>
           </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal delay={200} variant="zoom">
             <div className="price-card">
               <div className="compare">
                 <span className="strike">$60/hour with a human tutor</span>
@@ -346,7 +348,7 @@ export default function Home() {
               Common questions
             </div>
           </Reveal>
-          <Reveal delay={100}>
+          <Reveal delay={100} variant="blur">
             <h2 className="headline">Questions parents ask.</h2>
           </Reveal>
 
@@ -369,7 +371,7 @@ export default function Home() {
       {/* ================= FINAL CTA ================= */}
       <section className="band" id="download">
         <div className="container">
-          <Reveal>
+          <Reveal variant="blur">
             <h2 className="headline">Homework gets easier tonight.</h2>
           </Reveal>
           <Reveal delay={150}>
