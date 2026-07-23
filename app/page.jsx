@@ -35,15 +35,19 @@ const FAQ = [
   },
   {
     q: 'Is it really private?',
-    a: 'Yes. The tutoring happens entirely on your device. There’s no account, no server, and no way for us to see your child’s questions — that’s the whole design.',
+    a: 'Yes — in the way that matters. The tutoring happens entirely on your device, and what your child says to the tutor is never sent anywhere. Your account only handles sign-in, family profiles, and billing — it can’t see the conversations.',
+  },
+  {
+    q: 'Why is there an account?',
+    a: 'Two reasons: it unlocks your subscription, and it gives everyone in the house their own space. Mom, dad, and each kid can have their own tutor, their own subjects, and their own conversations — separate and private.',
   },
   {
     q: 'Does it just hand over answers?',
     a: 'It’s built to teach — walking through problems step by step and checking understanding along the way, the way a good tutor would.',
   },
   {
-    q: 'Does it ever need the internet?',
-    a: 'Only twice: to download the app, and to add new subject tutors when you want them. The tutoring itself is fully offline.',
+    q: 'When does it need the internet?',
+    a: 'To download the app, to sign in, and to add new subject tutors. The tutoring itself runs fully offline. And if you’ve signed in on a device before, it remembers you — you can get back in even without a connection.',
   },
   {
     q: 'What does it cost?',
@@ -75,8 +79,8 @@ export default function Home() {
             <Reveal delay={200}>
               <p className="hero-sub">
                 Cleophis lives on your computer — not in the cloud. It explains, step by step, as
-                many times as your kid needs. <strong>No internet required. Nothing shared.</strong>{' '}
-                Ten dollars a month.
+                many times as your kid needs. Once it’s set up, tutoring needs no internet —{' '}
+                <strong>and nothing your kid says ever leaves home.</strong> Ten dollars a month.
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -163,13 +167,16 @@ export default function Home() {
           </Reveal>
           <Reveal delay={200}>
             <p className="sub privacy-lead">
-              Cleophis never sends your child’s questions, homework, or progress anywhere — because
-              it can’t. There’s no account to create, no server listening, nothing to leak. The
-              tutor lives on your device, and everything your kid says to it stays there.
+              Your child’s questions, homework, and conversations never leave your device — the
+              tutoring has nothing to send. Your account is just a key: it signs you in, keeps each
+              family member’s tutor separate, and manages your subscription. It can’t see what’s
+              said. What happens between your kid and their tutor stays on the machine.
             </p>
           </Reveal>
           <Reveal delay={300}>
-            <p className="quiet-list">No account · No tracking · No cloud</p>
+            <p className="quiet-list">
+              Conversations stay on-device · No tracking · A profile for everyone in the house
+            </p>
           </Reveal>
         </div>
       </section>
@@ -192,8 +199,8 @@ export default function Home() {
                 Most AI tutors live in a data center — your child reaches them through the
                 internet, and their questions travel with them. Cleophis works the way software
                 used to: you download it, and it’s yours. The tutor itself — the AI — is installed
-                on your computer, sized to fit the memory it has. That’s why it works with no
-                Wi-Fi, and why nothing ever leaves the house.
+                on your computer, sized to fit the memory it has. That’s why tutoring works with no
+                Wi-Fi, and why the conversations never leave the house.
               </p>
             </Reveal>
           </div>

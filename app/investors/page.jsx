@@ -135,7 +135,7 @@ export default function InvestorsPage() {
               <div className="stat-num">
                 <Counter to={100} suffix="%" />
               </div>
-              <div className="stat-label">offline — no internet required</div>
+              <div className="stat-label">of tutoring runs offline, on-device</div>
             </Reveal>
             <Reveal className="stat" delay={300}>
               <div className="stat-num">
@@ -251,8 +251,8 @@ export default function InvestorsPage() {
 
           <Reveal delay={200}>
             <p className="caption how-payoff">
-              From install to first answer in under a minute — no account, no internet, no data
-              leaving the device.
+              From install to first answer in minutes — one sign-in, fully offline tutoring, and
+              no student data leaving the device.
             </p>
           </Reveal>
         </div>
