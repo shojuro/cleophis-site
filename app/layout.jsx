@@ -16,13 +16,13 @@ const serif = Source_Serif_4({
 
 export const metadata = {
   metadataBase: new URL('https://www.cleophis.com'),
-  title: 'Cleophis — Private, Offline AI Tutoring on Any Device',
+  title: 'Cleophis — A Private Tutor That Lives on Your Device',
   description:
-    'A growing library of fine-tuned, on-device AI models — a full academic tutor for $10/month that works 100% offline, with data that never leaves the device.',
+    'A patient AI tutor for your kid that works with no internet and keeps everything on your device. No account, no cloud, no data collection — $10/month.',
   openGraph: {
-    title: 'Cleophis — Private, Offline AI Tutoring on Any Device',
+    title: 'Cleophis — A Private Tutor That Lives on Your Device',
     description:
-      'A full academic tutor for $10/month that works 100% offline, with data that never leaves the device.',
+      'A patient AI tutor that works with no internet and keeps everything on your device. $10/month.',
     url: 'https://www.cleophis.com',
     siteName: 'Cleophis',
     type: 'website',

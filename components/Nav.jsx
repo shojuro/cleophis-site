@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const LINKS = [
-  ['#problem', 'Problem'],
-  ['#solution', 'Solution'],
-  ['#how', 'How it works'],
-  ['#vision', 'Vision'],
-  ['#investors', 'Investors'],
-];
-
-export default function Nav() {
+export default function Nav({ links, cta }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,7 +16,7 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''} ${open ? 'open' : ''}`}>
       <div className="nav-inner">
-        <a href="#top" className="brand" onClick={() => setOpen(false)}>
+        <a href="/" className="brand" onClick={() => setOpen(false)}>
           <span className="brand-mark" aria-hidden="true">
             <span />
           </span>
@@ -32,13 +24,13 @@ export default function Nav() {
         </a>
 
         <nav className="nav-links" aria-label="Main navigation">
-          {LINKS.map(([href, label]) => (
+          {links.map(([href, label]) => (
             <a key={href} href={href} className="nav-link" onClick={() => setOpen(false)}>
               {label}
             </a>
           ))}
-          <a href="#beta" className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
-            Join the beta
+          <a href={cta.href} className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
+            {cta.label}
           </a>
         </nav>
 

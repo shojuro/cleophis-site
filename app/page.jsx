@@ -1,391 +1,346 @@
 import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
-import Counter from '../components/Counter';
-import BetaForm from '../components/BetaForm';
+import EmailCapture from '../components/EmailCapture';
 
-const SOLUTION_CARDS = [
+const NAV_LINKS = [
+  ['#why', 'Why Cleophis'],
+  ['#privacy', 'Privacy'],
+  ['#subjects', 'Subjects'],
+  ['#pricing', 'Pricing'],
+  ['/investors', 'Investors'],
+];
+
+const MSI_HREF = '/downloads/CleophisSetup.msi';
+
+const TRIO = [
   {
-    big: '$10/mo',
-    title: 'Affordable',
-    desc: 'A full academic tutor for families priced out of $60/hour tutoring.',
+    title: 'Endlessly patient',
+    desc: 'It explains again — a new way each time — without sighing, judging, or charging by the hour.',
   },
   {
-    big: '100% Offline',
-    title: 'No internet needed',
-    desc: 'Works with no internet, on hardware from a 4 GB phone to a 32 GB PC.',
+    title: 'Works anywhere',
+    desc: 'Kitchen table, long car rides, spotty Wi-Fi. The tutor is on the device, so it just works.',
   },
   {
-    big: '100% Private',
-    title: 'On-device by design',
-    desc: 'Student data never leaves the phone or PC — nothing is logged to a cloud.',
+    title: 'One quiet price',
+    desc: '$10 a month. No hourly rates, no surprise fees, and you can cancel whenever you like.',
   },
 ];
 
-const STEPS = [
+const FAQ = [
   {
-    title: 'Auto-Profile System',
-    desc: 'Checks the device’s memory (4 GB to 32 GB+)',
+    q: 'What does it run on?',
+    a: 'Any Windows PC with at least 4 GB of memory. Android is on the way, with more platforms after that.',
   },
   {
-    title: 'Select & Load',
-    desc: 'Automatically downloads the best-fit local model for the device',
+    q: 'Is it really private?',
+    a: 'Yes. The tutoring happens entirely on your device. There’s no account, no server, and no way for us to see your child’s questions — that’s the whole design.',
   },
   {
-    title: 'Private Execution',
-    desc: '24/7 tutoring, fully offline',
-  },
-];
-
-const VISION_CARDS = [
-  { phase: 'LIVE', live: true, domain: 'Academics', items: ['Algebra II', 'AP Biology', 'Essay writing'] },
-  { phase: 'NEXT', live: false, domain: 'Test Prep', items: ['SAT · ACT', 'MCAT', 'Bar exam'] },
-  { phase: 'NEXT', live: false, domain: 'Professional', items: ['Coding', 'Accounting', 'Skilled trades'] },
-  { phase: 'NEXT', live: false, domain: 'Life & Hobbies', items: ['French cuisine', 'Guitar', 'Home repair'] },
-];
-
-const INV_CHIPS = [
-  {
-    title: 'Train once — the device does the rest',
-    desc: 'Inference, the expensive part of AI, runs 100% on the customer’s device. Our costs — training, storage, a one-time download — are cents per user.',
+    q: 'Does it just hand over answers?',
+    a: 'It’s built to teach — walking through problems step by step and checking understanding along the way, the way a good tutor would.',
   },
   {
-    title: '$0 marginal cost per query',
-    desc: 'Additional usage adds no cloud or API cost, so margins hold steady as the user base grows.',
+    q: 'Does it ever need the internet?',
+    a: 'Only twice: to download the app, and to add new subject tutors when you want them. The tutoring itself is fully offline.',
   },
   {
-    title: 'Model independence',
-    desc: 'In-house training and hosting of our model library — no reliance on frontier-model pricing or availability.',
+    q: 'What does it cost?',
+    a: '$10 a month, inside the app, after you install. Installing is free, and you can cancel anytime.',
   },
 ];
 
 export default function Home() {
   return (
     <main id="top">
-      <Nav />
+      <Nav links={NAV_LINKS} cta={{ href: '#download', label: 'Download' }} />
 
       {/* ================= HERO ================= */}
       <section className="hero">
-        <div className="float-d" style={{ width: 22, height: 22, top: '18%', left: '6%' }} />
-        <div className="float-d" style={{ width: 14, height: 14, top: '64%', left: '12%', animationDelay: '-4s' }} />
-        <div className="float-d" style={{ width: 18, height: 18, top: '30%', right: '10%', animationDelay: '-7s' }} />
-        <div className="float-d" style={{ width: 12, height: 12, top: '72%', right: '18%', animationDelay: '-2s' }} />
+        <div className="float-d" style={{ width: 20, height: 20, top: '20%', left: '4%' }} />
+        <div className="float-d" style={{ width: 12, height: 12, top: '70%', left: '9%', animationDelay: '-5s' }} />
 
-        <div className="container">
-          <Reveal>
-            <span className="hero-badge">
-              <span className="diamond" aria-hidden="true" />
-              Private · Offline · $10/month
-            </span>
-          </Reveal>
-          <Reveal delay={100}>
-            <h1>Private, offline academic tutoring — on any device.</h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="hero-sub">
-              Cleophis is a growing <strong>library of fine-tuned, on-device AI models</strong> — a
-              full academic tutor that works 100% offline, with data that never leaves the device,
-              sized to anything from a 4 GB phone to a 32 GB PC.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <div className="hero-ctas">
-              <a href="#beta" className="btn btn-primary">
-                Join the beta
-                <span className="arr" aria-hidden="true">→</span>
-              </a>
-              <a href="#investors" className="btn btn-ghost">
-                For investors
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= STAT BAND ================= */}
-      <section className="stats">
-        <div className="container">
-          <div className="stats-grid">
-            <Reveal className="stat">
-              <div className="stat-num">
-                <Counter to={39} suffix="M" />
-              </div>
-              <div className="stat-label">US students locked out of tutoring</div>
+        <div className="container hero-grid">
+          <div>
+            <Reveal>
+              <span className="hero-badge">
+                <span className="diamond" aria-hidden="true" />
+                Early access · Windows
+              </span>
             </Reveal>
-            <Reveal className="stat" delay={100}>
-              <div className="stat-num">
-                <Counter to={155} prefix="$" suffix="B" />
-              </div>
-              <div className="stat-label">global tutoring market</div>
+            <Reveal delay={100}>
+              <h1>A patient tutor for your kid. Right on your device.</h1>
             </Reveal>
-            <Reveal className="stat" delay={200}>
-              <div className="stat-num">
-                <Counter to={100} suffix="%" />
-              </div>
-              <div className="stat-label">offline — no internet required</div>
+            <Reveal delay={200}>
+              <p className="hero-sub">
+                Cleophis lives on your computer — not in the cloud. It explains, step by step, as
+                many times as your kid needs. <strong>No internet required. Nothing shared.</strong>{' '}
+                Ten dollars a month.
+              </p>
             </Reveal>
-            <Reveal className="stat" delay={300}>
-              <div className="stat-num">
-                <Counter to={0} prefix="$" />
+            <Reveal delay={300}>
+              <div className="hero-ctas">
+                <a href={MSI_HREF} className="btn btn-primary" download>
+                  Download for Windows
+                  <span className="arr" aria-hidden="true">↓</span>
+                </a>
+                <a href="#why" className="btn btn-ghost">
+                  Why families choose it
+                </a>
               </div>
-              <div className="stat-label">marginal cost per query</div>
+            </Reveal>
+            <Reveal delay={400}>
+              <p className="dl-note">.msi installer · PCs with 4 GB of memory or more · Android on the way</p>
             </Reveal>
           </div>
+
+          <Reveal delay={250}>
+            <div className="app-window" aria-hidden="true">
+              <div className="app-bar">
+                <span className="app-dot" />
+                <span className="app-dot" />
+                <span className="app-dot" />
+                <span className="app-title">Cleophis — Algebra II</span>
+                <span className="offline-badge">
+                  <span className="offline-dot" />
+                  Offline · on this device
+                </span>
+              </div>
+              <div className="chat">
+                <div className="msg msg-student">I don’t get factoring… x² + 5x + 6?</div>
+                <div className="msg msg-tutor">
+                  No problem — one step at a time. We need two numbers that multiply to 6 and add
+                  to 5. Try 2 and 3…
+                  <br />
+                  So: <strong>(x + 2)(x + 3)</strong>. Want to try the next one together?
+                </div>
+                <div className="msg msg-student">yes!</div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ================= PROBLEM ================= */}
-      <section className="section problem" id="problem">
+      {/* ================= WHY ================= */}
+      <section className="section" id="why">
         <div className="container">
           <Reveal>
             <div className="kicker">
               <span className="diamond" aria-hidden="true" />
-              Problem
+              Why Cleophis
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <p className="problem-statement">
-              <span className="accent">39 million</span> US students are locked out of a{' '}
-              <span className="accent">$155 billion</span> tutoring market — they can’t afford it,
-              can’t get online, and their parents won’t trust the cloud with their data.
-            </p>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="caption">The trifecta of knowledge disparity: cost, connectivity, and privacy.</p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= SOLUTION ================= */}
-      <section className="section solution" id="solution" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Solution
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="headline">Cleophis answers all three.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub">
-              A library of fine-tuned, on-device AI models — starting with a full academic tutor.
-            </p>
+            <h2 className="headline">Gentle help, whenever homework happens.</h2>
           </Reveal>
 
-          <div className="grid3">
-            {SOLUTION_CARDS.map((c, i) => (
-              <Reveal key={c.title} delay={i * 120}>
-                <div className="card">
+          <div className="trio">
+            {TRIO.map((t, i) => (
+              <Reveal key={t.title} delay={i * 120}>
+                <div className="trio-item">
                   <span className="diamond" aria-hidden="true" />
-                  <div className="card-big">{c.big}</div>
-                  <div className="card-title">{c.title}</div>
-                  <p className="card-desc">{c.desc}</p>
+                  <h3>{t.title}</h3>
+                  <p>{t.desc}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={200}>
-            <div className="quote-card">
-              <span className="quote-mark" aria-hidden="true">“</span>
-              <div className="quote-headline">"Microsoft weighs DeepSeek for Copilot Cowork"</div>
-              <p className="quote-body">
-                “Microsoft is exploring DeepSeek V4, a Chinese open-source AI model fine-tuned on
-                Azure, as a cheaper model option for Copilot Cowork”
-              </p>
-              <p className="quote-source">
-                <strong>Axios</strong>, June 16, 2026 · <strong>Memeburn</strong>, June 19, 2026
-              </p>
-              <p className="caption quote-caption">
-                The exact category Microsoft is now chasing — a fine-tuned, local model.
-              </p>
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* ================= HOW IT WORKS ================= */}
-      <section className="section" id="how" style={{ background: 'var(--panel)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
+      {/* ================= PRIVACY ================= */}
+      <section className="section privacy" id="privacy">
         <div className="container">
           <Reveal>
             <div className="kicker">
               <span className="diamond" aria-hidden="true" />
-              How it works
+              Privacy
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="headline">Zero setup, on-device execution.</h2>
+            <h2 className="headline">What happens at home, stays home.</h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="sub">
-              The application profiles the device on launch, loads the best-fit model from its
-              catalog, and runs 100% offline with zero cloud latency.
-            </p>
-          </Reveal>
-
-          <div className="steps">
-            <div className="step-connector" aria-hidden="true" />
-            {STEPS.map((s, i) => (
-              <Reveal key={s.title} delay={i * 140} className="step">
-                <div className="step-circle">{String(i + 1).padStart(2, '0')}</div>
-                <div className="step-title">{s.title}</div>
-                <p className="step-desc">{s.desc}</p>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={200}>
-            <p className="caption how-payoff">
-              From install to first answer in under a minute — no account, no internet, no data
-              leaving the device.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= VISION ================= */}
-      <section className="section" id="vision">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Vision
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="headline">One on-device library. Any subject.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub">
-              Academic tutoring is our wedge. The same architecture — small models fine-tuned to the
-              subdomain and sized to the device — extends to anything people want to learn,
-              privately and offline.
-            </p>
-          </Reveal>
-
-          <div className="grid4">
-            {VISION_CARDS.map((c, i) => (
-              <Reveal key={c.domain} delay={i * 100}>
-                <div className={`card ${c.live ? 'vision-card-live' : ''}`}>
-                  <span className={`pill ${c.live ? 'pill-live' : 'pill-next'}`}>{c.phase}</span>
-                  <div className="card-title" style={{ marginTop: 0 }}>{c.domain}</div>
-                  <ul className="vision-items">
-                    {c.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={200}>
-            <p className="caption moat">
-              <strong>The moat:</strong> not one general cloud model, but a growing library of
-              narrow, on-device experts — each small enough to run on a phone.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= INVESTORS ================= */}
-      <section className="section investors" id="investors">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              For investors
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="headline">Democratizing K–12 education.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub">
-              We’re opening a <strong style={{ color: 'var(--white)' }}>$1.4 billion</strong> US
-              market — starting with the 39 million students the cloud leaves behind. Cleophis is
-              raising a pre-seed round.
-            </p>
-          </Reveal>
-
-          <div className="inv-chips">
-            {INV_CHIPS.map((c, i) => (
-              <Reveal key={c.title} delay={i * 120}>
-                <div className="inv-chip">
-                  <div className="inv-chip-title">{c.title}</div>
-                  <p className="inv-chip-desc">{c.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={200}>
-            <div className="inv-ctas">
-              <a href="mailto:invest@cleophis.com" className="btn btn-primary">
-                Request the investor deck
-                <span className="arr" aria-hidden="true">→</span>
-              </a>
-              <a href="#beta" className="btn btn-ghost">
-                See the product in beta
-              </a>
-            </div>
-          </Reveal>
-          <Reveal delay={300}>
-            <p className="inv-meta">
-              Pre-seed · Patrick Jackson, Founder &amp; System Architect · 2026
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= BETA ================= */}
-      <section className="section beta" id="beta">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Early access
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="headline">Be first in line.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub">
-              Early access is opening for parents, students, educators, and homeschool communities.
-              No internet required — just a device.
+            <p className="sub privacy-lead">
+              Cleophis never sends your child’s questions, homework, or progress anywhere — because
+              it can’t. There’s no account to create, no server listening, nothing to leak. The
+              tutor lives on your device, and everything your kid says to it stays there.
             </p>
           </Reveal>
           <Reveal delay={300}>
-            <BetaForm />
-          </Reveal>
-          <Reveal delay={400}>
-            <p className="beta-note">
-              We’ll only use your email to contact you about the Cleophis beta. Nothing else, ever.
-            </p>
+            <p className="quiet-list">No account · No tracking · No cloud</p>
           </Reveal>
         </div>
       </section>
 
-      {/* ================= FOOTER ================= */}
-      <footer className="footer">
-        <div className="container footer-inner">
-          <a href="#top" className="brand">
-            <span className="brand-mark" aria-hidden="true">
-              <span />
-            </span>
-            Cleophis
-          </a>
-          <p className="footer-tag">Private. Offline. Affordable.</p>
-          <nav className="footer-links" aria-label="Footer">
-            <a href="#investors">For investors</a>
-            <a href="#beta">Join the beta</a>
-            <a href="mailto:hello@cleophis.com">Contact</a>
-          </nav>
-          <p className="footer-copy">© 2026 Cleophis. All rights reserved.</p>
+      {/* ================= WHAT'S A LOCAL TUTOR ================= */}
+      <section className="section" id="local">
+        <div className="container explain-grid">
+          <div>
+            <Reveal>
+              <div className="kicker">
+                <span className="diamond" aria-hidden="true" />
+                On your device
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <h2 className="headline">The tutor is downloaded, not rented.</h2>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="sub">
+                Most AI tutors live in a data center — your child reaches them through the
+                internet, and their questions travel with them. Cleophis works the way software
+                used to: you download it, and it’s yours. The tutor itself — the AI — is installed
+                on your computer, sized to fit the memory it has. That’s why it works with no
+                Wi-Fi, and why nothing ever leaves the house.
+              </p>
+            </Reveal>
+          </div>
+          <div className="explain-cards">
+            <Reveal delay={200}>
+              <div className="card explain-card">
+                <div className="explain-label">Cloud AI</div>
+                <p className="card-desc">Questions travel to someone else’s computer.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={320}>
+              <div className="card explain-card explain-card-us">
+                <div className="explain-label explain-label-us">Cleophis</div>
+                <p className="card-desc">The tutor lives on yours.</p>
+              </div>
+            </Reveal>
+          </div>
         </div>
-      </footer>
+      </section>
+
+      {/* ================= SUBJECTS ================= */}
+      <section className="section privacy" id="subjects">
+        <div className="container">
+          <Reveal>
+            <div className="kicker">
+              <span className="diamond" aria-hidden="true" />
+              Subjects
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="headline">Built subject by subject — on purpose.</h2>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="sub">
+              Each subject is its own specialist — a tutor trained for that topic, not a
+              jack-of-all-trades stretched thin. The library keeps growing, and every tutor in it
+              is part of the same subscription.
+            </p>
+          </Reveal>
+          <Reveal delay={300}>
+            <div className="tag-row">
+              <span className="tag tag-live">Algebra II</span>
+              <span className="tag tag-live">AP Biology</span>
+              <span className="tag tag-live">Essay writing</span>
+              <span className="tag">SAT · ACT prep — soon</span>
+              <span className="tag">Coding — soon</span>
+              <span className="tag">More on the way</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ================= PRICING ================= */}
+      <section className="section" id="pricing">
+        <div className="container">
+          <Reveal>
+            <div className="kicker">
+              <span className="diamond" aria-hidden="true" />
+              Pricing
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="headline">Tutoring, without the tutoring bill.</h2>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <div className="price-card">
+              <div className="compare">
+                <span className="strike">$60/hour with a human tutor</span>
+              </div>
+              <div className="price-line">
+                <span className="price-num">$10</span>
+                <span className="price-per">/month · everything included</span>
+              </div>
+              <ul className="price-list">
+                <li>Unlimited questions, 24/7</li>
+                <li>Every subject, current and future</li>
+                <li>Works fully offline</li>
+                <li>Nothing leaves your device</li>
+                <li>Cancel anytime</li>
+              </ul>
+              <a href={MSI_HREF} className="btn btn-primary" download>
+                Download for Windows
+                <span className="arr" aria-hidden="true">↓</span>
+              </a>
+              <p className="dl-note">.msi installer · free to install, subscribe in-app</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ================= FAQ ================= */}
+      <section className="section privacy" id="faq">
+        <div className="container">
+          <Reveal>
+            <div className="kicker">
+              <span className="diamond" aria-hidden="true" />
+              Common questions
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="headline">Questions parents ask.</h2>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <div className="faq">
+              {FAQ.map((f) => (
+                <details key={f.q}>
+                  <summary>
+                    {f.q}
+                    <span className="faq-chev" aria-hidden="true" />
+                  </summary>
+                  <p className="faq-a">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ================= FINAL CTA ================= */}
+      <section className="band" id="download">
+        <div className="container">
+          <Reveal>
+            <h2 className="headline">Homework gets easier tonight.</h2>
+          </Reveal>
+          <Reveal delay={150}>
+            <p className="band-sub">Private. Offline. $10 a month. Installed in a minute.</p>
+          </Reveal>
+          <Reveal delay={250}>
+            <div className="band-ctas">
+              <a href={MSI_HREF} className="btn btn-primary" download>
+                Download for Windows
+                <span className="arr" aria-hidden="true">↓</span>
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={350}>
+            <p className="band-capture-lead">
+              Not on Windows? Leave your email and we’ll tell you when Cleophis reaches your device.
+            </p>
+            <EmailCapture />
+          </Reveal>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   );
 }
