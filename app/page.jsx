@@ -13,10 +13,17 @@ const NAV_LINKS = [
   ['/investors', 'Investors'],
 ];
 
-// When the installer is ready: drop it at public/downloads/CleophisSetup.msi,
-// set MSI_READY = true, and the site reverts to direct-download buttons.
-const MSI_READY = false;
-const MSI_HREF = '/downloads/CleophisSetup.msi';
+// The installer is hosted in the Backblaze B2 bucket "cleophis-downloads-1" under the
+// fixed name CleophisSetup.msi. To release a new build, upload it to the bucket with the
+// same name; the site needs no change. NEXT_PUBLIC_MSI_URL overrides the address.
+// Set MSI_READY = false to fall back to the email-capture buttons.
+const MSI_READY = true;
+const MSI_HREF =
+  process.env.NEXT_PUBLIC_MSI_URL ||
+  'https://f005.backblazeb2.com/file/cleophis-downloads-1/CleophisSetup.msi';
+// Shown beside download buttons until the installer is code-signed. Remove once it is.
+const SMARTSCREEN_NOTE =
+  'Cleophis is new, so Windows may show a “Windows protected your PC” box when you open the installer. Choose More info, then Run anyway.';
 const CTA_HREF = MSI_READY ? MSI_HREF : '#download';
 const CTA_LABEL = MSI_READY ? 'Download for Windows' : 'Get early access';
 
@@ -78,7 +85,7 @@ export default function Home() {
             <Reveal>
               <span className="hero-badge">
                 <span className="diamond" aria-hidden="true" />
-                Early access · Windows
+                {MSI_READY ? 'Available now · Windows' : 'Early access · Windows'}
               </span>
             </Reveal>
             <Reveal delay={100}>
@@ -104,6 +111,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={400}>
               <p className="dl-note">For Windows PCs with 4 GB of memory or more · Android on the way</p>
+              {MSI_READY && <p className="dl-note">{SMARTSCREEN_NOTE}</p>}
             </Reveal>
           </div>
 
@@ -334,6 +342,7 @@ export default function Home() {
                 <span className="arr" aria-hidden="true">{MSI_READY ? '↓' : '→'}</span>
               </a>
               <p className="dl-note">Free to install, subscribe in-app</p>
+              {MSI_READY && <p className="dl-note">{SMARTSCREEN_NOTE}</p>}
             </div>
           </Reveal>
         </div>
