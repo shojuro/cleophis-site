@@ -3,7 +3,7 @@ import '../site.css';
 export const metadata = {
   title: 'Cleophis — For Investors',
   description:
-    'Cleophis is opening a $1.4 billion US market — private, offline, on-device AI tutoring for the 39 million students the cloud leaves behind. Raising pre-seed.',
+    'Cleophis is an offline algebra tutor for homeschool teens at $10 a month per family: a single, on-device AI tutor in place of a patchwork of workbooks and apps.',
 };
 
 const DECK = 'mailto:invest@cleophis.com';
@@ -16,37 +16,72 @@ const CARD = { display: 'flex', flexDirection: 'column', gap: '10px', padding: '
 const GRID = (min) => ({ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(${min}px, 100%), 1fr))`, gap: '20px' });
 const RULE = { width: '36px', height: '3px', background: '#B08A3E' };
 
+// Content follows the pitch deck (v8.1). Update both together.
 const STATS = [
-  ['39M', 'US students locked out of tutoring'],
-  ['$155B', 'global tutoring market'],
-  ['100%', 'of tutoring runs offline, on-device'],
-  ['$0', 'marginal cost per query'],
+  ['39M', 'students whose parents piece tutoring together themselves'],
+  ['$16B', 'spent each year on the K–12 DIY patchwork, at most'],
+  ['$100M+', 'starting market: grades 6–12 homeschoolers'],
+  ['$10', 'a month per family'],
 ];
 
 const SOLUTION_CARDS = [
-  { big: '$10/mo', title: 'Affordable', desc: 'A full academic tutor for families priced out of $60/hour tutoring.' },
-  { big: '100% Offline', title: 'No internet needed', desc: 'Works with no internet, on hardware from a 4 GB phone to a 32 GB PC.' },
-  { big: '100% Private', title: 'On-device by design', desc: 'Student data never leaves the phone or PC — nothing is logged to a cloud.' },
+  { big: '$10/mo', title: 'One price per family', desc: 'Human tutors run $40 to $80 an hour, per child.' },
+  { big: '100% on-device', title: 'Private by design', desc: 'Khanmigo, ChatGPT and other cloud AI send student work to their servers. Cleophis does not.' },
+  { big: 'Airplane mode', title: 'Distraction-free and offline', desc: 'No browser and no Wi-Fi needed, so there is nothing else on the screen to wander off to.' },
 ];
 
-const STEPS = [
-  { title: 'Auto-Profile System', desc: 'Checks the device’s memory (4 GB to 32 GB+)' },
-  { title: 'Select & Load', desc: 'Automatically downloads the best-fit local model for the device' },
-  { title: 'Private Execution', desc: '24/7 tutoring, fully offline' },
+const HOW = [
+  { title: 'Socratic guidance', desc: 'Walks through each step with math checked by a real calculator, never giving away the answer.' },
+  { title: 'Practice till it sticks', desc: 'Generates targeted practice problems until the student solves them solo.' },
 ];
 
-const VISION_CARDS = [
-  { phase: 'Live', live: true, domain: 'Academics', items: ['Algebra II', 'AP Biology', 'Essay writing'] },
-  { phase: 'Next', live: false, domain: 'Test Prep', items: ['SAT · ACT', 'MCAT', 'Bar exam'] },
-  { phase: 'Next', live: false, domain: 'Professional', items: ['Coding', 'Accounting', 'Skilled trades'] },
-  { phase: 'Next', live: false, domain: 'Life & Hobbies', items: ['French cuisine', 'Guitar', 'Home repair'] },
+const GTM = [
+  { phase: 'Now', when: 'Months 1–6', title: 'Homeschool beta and early adopters', desc: 'Onboard initial grades 6–12 homeschool families through direct outreach and warm introductions into active online homeschool groups, to validate retention.' },
+  { phase: 'Next', when: 'Months 7–24', title: 'Co-op and parent content scaling', desc: 'Scale across online homeschool networks, co-ops, educational content and parent-led referrals as the full grades 6–12 library and test prep roll out.' },
+  { phase: 'Later', when: 'Year 3+', title: 'Broader K–12 DIY market', desc: 'Expand beyond homeschooling into the $16B K–12 DIY market for everyday families seeking affordable, private tutoring.' },
 ];
 
-const INV_CHIPS = [
-  { title: 'Train once — the device does the rest', desc: 'Inference, the expensive part of AI, runs 100% on the customer’s device. Our costs — training, storage, a one-time download — are cents per user.' },
-  { title: '$0 marginal cost per query', desc: 'Additional usage adds no cloud or API cost, so margins hold steady as the user base grows.' },
-  { title: 'Model independence', desc: 'In-house training and hosting of our model library — no reliance on frontier-model pricing or availability.' },
+const COMPETE_COLS = ['Cleophis', 'Khanmigo', 'ChatGPT / cloud AI', 'Human tutors'];
+const COMPETE_ROWS = [
+  ['Family price', '$10 / mo', '$4 / mo', '$0 – $20 / mo (per user)', '$40 – $80 / hr (per kid)'],
+  ['Data privacy', '100% on-device', 'Cloud servers', 'Cloud servers', 'In-person / Zoom'],
+  ['Distraction-free and offline', 'Works in airplane mode', 'Requires browser + Wi-Fi', 'Requires browser + Wi-Fi', 'Scheduled sessions'],
+  ['Teaching approach', 'Socratic + calculator + practice', 'Socratic', 'Gives direct answers', 'Varies by tutor'],
 ];
+
+const TEAM = [
+  { title: 'Educator & Builder', desc: '10 years classroom teaching, 5 years private tutoring, and built the working offline tutor solo.' },
+  { title: 'Field IT & Operations', desc: 'Former U.S. military IT lead (deployed 2,000+ hospital and clinic computers) and forward-deployed Marine Expeditionary Unit medical logistics coordinator.' },
+  { title: 'Solo + AI Execution', desc: 'Near-zero-burn operation pairing founder domain expertise with AI tooling across engineering, training, and growth.' },
+];
+
+const TRACTION = [
+  { title: 'Product', desc: 'Offline math tutor running on Windows and 4 GB Android phones. Ready for beta; cross-device sync in progress.' },
+  { title: 'Customers', desc: 'Pre-revenue. Onboarding initial beta families to convert first paying subscribers.' },
+  { title: 'Growth', desc: 'Launching first paying cohort, targeting a 100% doubling cadence from initial adopters.' },
+];
+
+const BIG = { margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: 'clamp(26px, 3.2vw, 38px)', lineHeight: 1.3, color: '#123C69', textWrap: 'pretty' };
+const H3 = { margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: '21px' };
+const HEAD = { display: 'flex', flexDirection: 'column', gap: '12px' };
+const TH = { padding: '14px 16px', textAlign: 'left', fontSize: '14px', fontWeight: '600', letterSpacing: '0.04em', color: '#465060', borderBottom: '2px solid #E0D8C8', whiteSpace: 'nowrap' };
+const TD = { padding: '14px 16px', textAlign: 'left', verticalAlign: 'top', borderBottom: '1px solid #E0D8C8', color: '#465060' };
+const TABLE_BOX = { overflowX: 'auto', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '14px' };
+
+function Cards({ items, min = 260, tone }) {
+  return (
+    <div className="stag" style={GRID(min)}>
+      {items.map((c) => (
+        <div key={c.title} className="card" style={{ ...CARD, background: tone === 'light' ? '#FBF8F1' : CARD.background }}>
+          <span aria-hidden="true" className="rule" style={RULE}></span>
+          {c.big && <span style={{ fontFamily: SERIF, fontWeight: '700', fontSize: '34px', lineHeight: 1.1, color: '#123C69' }}>{c.big}</span>}
+          <h3 style={H3}>{c.title}</h3>
+          <p style={{ margin: 0, color: '#465060' }}>{c.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Buttons({ dark }) {
   return (
@@ -73,8 +108,9 @@ export default function InvestorsPage() {
 <a href="/" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Product</a>
 <a href="#problem" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Problem</a>
 <a href="#solution" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Solution</a>
-<a href="#how" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>How it works</a>
-<a href="#vision" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Vision</a>
+<a href="#market" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Market</a>
+<a href="#team" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Team</a>
+<a href="#traction" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Traction</a>
 <a href={DECK} className="btn" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 18px', borderRadius: '10px', background: '#A83A5C', color: '#FFFFFF', textDecoration: 'none', fontSize: '16px', fontWeight: '600' }}>Request the deck</a>
 </nav>
 </div>
@@ -82,9 +118,8 @@ export default function InvestorsPage() {
 
 <section style={{ background: '#F1EBDF' }}>
 <div style={{ ...WRAP, padding: '80px 24px 88px', alignItems: 'flex-start', gap: '22px' }}>
-<span className="load d1" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '999px', background: '#FBF8F1', border: '1px solid #E0D8C8', fontSize: '14px', fontWeight: '600', color: '#465060' }}><span aria-hidden="true" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#B08A3E' }}></span>Pre-seed · 2026</span>
-<h1 className="load d2" style={{ margin: 0, maxWidth: '15em', fontFamily: SERIF, fontWeight: '700', fontSize: 'clamp(38px, 5vw, 60px)', lineHeight: 1.08, letterSpacing: '-0.01em', color: '#123C69', textWrap: 'balance' }}>Private, offline academic tutoring — on any device.</h1>
-<p className="load d3" style={{ ...SUB, fontSize: '19px', maxWidth: '38em' }}>Cleophis is a growing <strong style={{ color: '#1E2A3A' }}>library of fine-tuned, on-device AI models</strong> — a full academic tutor that works 100% offline, with data that never leaves the device, sized to anything from a 4 GB phone to a 32 GB PC.</p>
+<h1 className="load d2" style={{ margin: 0, maxWidth: '15em', fontFamily: SERIF, fontWeight: '700', fontSize: 'clamp(38px, 5vw, 60px)', lineHeight: 1.08, letterSpacing: '-0.01em', color: '#123C69', textWrap: 'balance' }}>An offline algebra tutor for homeschool teens. $10 a month.</h1>
+<p className="load d3" style={{ ...SUB, fontSize: '19px', maxWidth: '38em' }}>Cleophis replaces a fragmented patchwork of workbooks and apps with a <strong style={{ color: '#1E2A3A' }}>single, on-device AI tutor</strong>: structured, kid-safe tutoring that works even in airplane mode.</p>
 <div className="load d4"><Buttons /></div>
 </div>
 </section>
@@ -103,99 +138,108 @@ export default function InvestorsPage() {
 <section id="problem">
 <div style={{ ...WRAP, maxWidth: '960px', gap: '18px' }}>
 <span style={KICK}>Problem</span>
-<p className="rise" style={{ margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: 'clamp(26px, 3.2vw, 38px)', lineHeight: 1.3, color: '#123C69', textWrap: 'pretty' }}><span style={{ color: '#983154' }}>39 million</span> US students are locked out of a <span style={{ color: '#983154' }}>$155 billion</span> tutoring market — they can’t afford it, can’t get online, and their parents won’t trust the cloud with their data.</p>
-<p style={{ margin: 0, fontFamily: SERIF, fontStyle: 'italic', color: '#5C6470' }}>The trifecta of knowledge disparity: cost, connectivity, and privacy.</p>
+<p className="rise" style={BIG}>Parents of <span style={{ color: '#983154' }}>39 million</span> students already spend up to <span style={{ color: '#983154' }}>$16 billion</span> a year on a fragmented DIY patchwork of workbooks and apps, compensating for human tutors they can’t afford and cloud AI tools they don’t trust with their kids’ data.</p>
 </div>
 </section>
 
 <section id="solution">
 <div style={{ ...WRAP, paddingTop: '8px' }}>
-<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+<div style={HEAD}>
 <span style={KICK}>Solution</span>
-<h2 className="rise" style={H2}>Cleophis answers all three.</h2>
-<p style={SUB}>A library of fine-tuned, on-device AI models — downloaded, not streamed — starting with a full academic tutor.</p>
+<p className="rise" style={BIG}>Cleophis replaces that fragmented patchwork with a single, on-device AI tutor, giving students structured, kid-safe tutoring starting at $10 a month per family.</p>
 </div>
-<div className="stag" style={GRID(260)}>
-{SOLUTION_CARDS.map((c) => (
-<div key={c.title} className="card" style={CARD}>
-<span aria-hidden="true" className="rule" style={RULE}></span>
-<span style={{ fontFamily: SERIF, fontWeight: '700', fontSize: '34px', lineHeight: 1.1, color: '#123C69' }}>{c.big}</span>
-<h3 style={{ margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: '21px' }}>{c.title}</h3>
-<p style={{ margin: 0, color: '#465060' }}>{c.desc}</p>
-</div>
-))}
-</div>
-<figure className="depth rise" style={{ margin: 0, display: 'flex', flexDirection: 'column', gap: '12px', padding: '32px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '16px' }}>
-<span aria-hidden="true" style={{ fontFamily: SERIF, fontWeight: '700', fontSize: '64px', lineHeight: 0.6, color: '#B08A3E', height: '30px' }}>“</span>
-<p style={{ margin: 0, fontFamily: SERIF, fontWeight: '700', fontSize: '24px', lineHeight: 1.25, color: '#123C69' }}>"Microsoft weighs DeepSeek for Copilot Cowork"</p>
-<blockquote style={{ margin: 0, fontFamily: SERIF, fontSize: '19px', color: '#1E2A3A' }}>“Microsoft is exploring DeepSeek V4, a Chinese open-source AI model fine-tuned on Azure, as a cheaper model option for Copilot Cowork”</blockquote>
-<figcaption style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-<span style={{ fontSize: '15px', color: '#465060' }}><strong>Axios</strong>, June 16, 2026 · <strong>Memeburn</strong>, June 19, 2026</span>
-<span style={{ paddingTop: '12px', borderTop: '1px solid #E0D8C8', fontFamily: SERIF, fontStyle: 'italic', color: '#5C6470' }}>The exact category Microsoft is now chasing — a fine-tuned, local model.</span>
-</figcaption>
-</figure>
+<Cards items={SOLUTION_CARDS} />
 </div>
 </section>
 
-<section id="how" style={{ background: '#F1EBDF' }}>
-<div style={WRAP}>
-<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-<span style={KICK}>How it works</span>
-<h2 className="rise" style={H2}>Zero setup, on-device execution.</h2>
-<p style={SUB}>The application profiles the device on launch, loads the best-fit model from its catalog, and runs 100% offline with zero cloud latency.</p>
+<section id="market" style={{ background: '#F1EBDF' }}>
+<div style={{ ...WRAP, maxWidth: '960px', gap: '18px' }}>
+<span style={KICK}>Market</span>
+<p className="rise" style={BIG}>We are starting with grades 6–12 homeschoolers, a <span style={{ color: '#983154' }}>$100M+</span> DIY market, before expanding into the broader <span style={{ color: '#983154' }}>$16 billion</span> K–12 DIY market.</p>
 </div>
-<ol className="stag" style={{ listStyle: 'none', margin: 0, padding: 0, ...GRID(240) }}>
-{STEPS.map((s, i) => (
-<li key={s.title} style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '24px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '14px' }}>
-<span aria-hidden="true" style={{ display: 'grid', placeItems: 'center', width: '44px', height: '44px', borderRadius: '50%', background: '#123C69', color: '#FBF8F1', fontFamily: SERIF, fontWeight: '700', fontSize: '18px' }}>{String(i + 1).padStart(2, '0')}</span>
-<h3 style={{ margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: '21px' }}>{s.title}</h3>
-<p style={{ margin: 0, color: '#465060' }}>{s.desc}</p>
+</section>
+
+<section id="how">
+<div style={WRAP}>
+<div style={HEAD}>
+<span style={KICK}>How it works</span>
+<h2 className="rise" style={H2}>Private math tutoring directly on the student’s device, even in airplane mode.</h2>
+</div>
+<Cards items={HOW} min={320} />
+</div>
+</section>
+
+<section id="gtm" style={{ background: '#F1EBDF' }}>
+<div style={WRAP}>
+<div style={HEAD}>
+<span style={KICK}>Go-to-market strategy</span>
+<h2 className="rise" style={H2}>Start with homeschool families, then scale.</h2>
+<p style={SUB}>We start with grades 6–12 homeschool families and co-ops, then scale into the $16B K–12 DIY market.</p>
+</div>
+<ol className="stag" style={{ listStyle: 'none', margin: 0, padding: 0, ...GRID(260) }}>
+{GTM.map((g) => (
+<li key={g.phase} style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '24px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '14px' }}>
+<span style={{ alignSelf: 'flex-start', padding: '3px 12px', borderRadius: '999px', background: '#123C69', color: '#FBF8F1', fontSize: '13px', fontWeight: '700', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{g.phase} · {g.when}</span>
+<h3 style={H3}>{g.title}</h3>
+<p style={{ margin: 0, color: '#465060' }}>{g.desc}</p>
 </li>
 ))}
 </ol>
-<p style={{ margin: 0, fontFamily: SERIF, fontStyle: 'italic', fontSize: '19px', color: '#123C69' }}>From install to first answer in minutes — one sign-in, fully offline tutoring, and no student data leaving the device.</p>
 </div>
 </section>
 
-<section id="vision">
+<section id="competition">
 <div style={WRAP}>
-<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-<span style={KICK}>Vision</span>
-<h2 className="rise" style={H2}>One on-device library. Any subject.</h2>
-<p style={SUB}>Academic tutoring is our wedge. The same architecture — small models fine-tuned to the subdomain and sized to the device — extends to anything people want to learn, privately and offline.</p>
+<div style={HEAD}>
+<span style={KICK}>Competition</span>
+<h2 className="rise" style={H2}>Parents want private, distraction-free tutoring their kids can use anywhere.</h2>
 </div>
-<div className="stag" style={GRID(220)}>
-{VISION_CARDS.map((c) => (
-<div key={c.domain} className="card" style={{ ...CARD, background: c.live ? '#123C69' : '#F1EBDF', color: c.live ? '#FBF8F1' : '#1E2A3A', border: c.live ? '1px solid #123C69' : CARD.border }}>
-<span style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '6px', padding: '3px 12px', borderRadius: '999px', fontSize: '13px', fontWeight: '700', letterSpacing: '0.06em', textTransform: 'uppercase', background: c.live ? '#DCEFE3' : '#FBF8F1', color: c.live ? '#1B5E40' : '#5C6470', border: c.live ? '0' : '1px solid #E0D8C8' }}>{c.live && <span aria-hidden="true" className="pulse" style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#1B5E40' }}></span>}{c.phase}</span>
-<h3 style={{ margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: '22px' }}>{c.domain}</h3>
-<ul style={{ margin: 0, paddingLeft: '20px', color: c.live ? '#E9E3D6' : '#465060' }}>
-{c.items.map((item) => (<li key={item}>{item}</li>))}
-</ul>
-</div>
+<div className="depth" style={TABLE_BOX}>
+<table style={{ width: '100%', minWidth: '760px', borderCollapse: 'collapse' }}>
+<thead><tr>
+<th scope="col" style={TH}>What parents need</th>
+{COMPETE_COLS.map((c, i) => (<th key={c} scope="col" style={{ ...TH, color: i === 0 ? '#123C69' : TH.color, background: i === 0 ? '#F1EBDF' : 'transparent' }}>{c}</th>))}
+</tr></thead>
+<tbody>
+{COMPETE_ROWS.map(([need, ...cells]) => (
+<tr key={need}>
+<th scope="row" style={{ ...TD, fontWeight: '600', color: '#1E2A3A' }}>{need}</th>
+{cells.map((c, i) => (<td key={i} style={{ ...TD, fontWeight: i === 0 ? '600' : '400', color: i === 0 ? '#123C69' : TD.color, background: i === 0 ? '#F1EBDF' : 'transparent' }}>{c}</td>))}
+</tr>
 ))}
+</tbody>
+</table>
 </div>
-<p style={{ margin: 0, padding: '20px 24px', borderRadius: '14px', background: '#F1EBDF', color: '#1E2A3A' }}><strong style={{ color: '#123C69' }}>The moat:</strong> not one general cloud model, but a growing library of narrow, on-device experts — each small enough to run on a phone.</p>
 </div>
 </section>
 
-<section id="investors" style={{ background: '#123C69', color: '#FBF8F1' }}>
-<div style={{ ...WRAP, padding: '84px 24px' }}>
-<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-<span style={{ ...KICK, color: '#E3C98A' }}>For investors</span>
-<h2 className="rise" style={{ ...H2, color: '#FBF8F1' }}>Democratizing K–12 education.</h2>
-<p style={{ ...SUB, fontSize: '19px', color: '#E9E3D6' }}>We’re opening a <strong style={{ color: '#FFFFFF' }}>$1.4 billion</strong> US market — starting with the 39 million students the cloud leaves behind. Cleophis is raising a pre-seed round.</p>
+<section id="team" style={{ background: '#F1EBDF' }}>
+<div style={WRAP}>
+<div style={HEAD}>
+<span style={KICK}>Team</span>
+<h2 className="rise" style={H2}>Patrick Jackson, Founder. The teacher and the builder are the same person.</h2>
 </div>
-<div className="stag" style={GRID(260)}>
-{INV_CHIPS.map((c) => (
-<div key={c.title} style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '24px', borderRadius: '14px', background: 'rgba(251, 248, 241, 0.06)', border: '1px solid rgba(227, 201, 138, 0.35)' }}>
-<h3 style={{ margin: 0, fontFamily: SERIF, fontWeight: '600', fontSize: '20px', color: '#E3C98A' }}>{c.title}</h3>
-<p style={{ margin: 0, color: '#E9E3D6' }}>{c.desc}</p>
+<Cards items={TEAM} tone="light" />
 </div>
-))}
+</section>
+
+<section id="traction">
+<div style={WRAP}>
+<div style={HEAD}>
+<span style={KICK}>Traction</span>
+<h2 className="rise" style={H2}>A working offline math tutor on Windows and 4 GB Android phones, ready for beta testing.</h2>
 </div>
-<Buttons dark />
-<p style={{ margin: 0, paddingTop: '18px', borderTop: '1px solid rgba(227, 201, 138, 0.45)', fontWeight: '600', color: '#E3C98A' }}>Pre-seed · Patrick Jackson, Founder &amp; System Architect · 2026</p>
+<Cards items={TRACTION} />
+</div>
+</section>
+
+<section id="contact" style={{ background: '#F1EBDF' }}>
+<div style={{ ...WRAP, maxWidth: '960px', alignItems: 'flex-start', gap: '18px' }}>
+<span style={KICK}>Contact</span>
+<h2 className="rise" style={H2}>An algebra tutor for every family priced out of one.</h2>
+<p style={{ ...SUB, fontSize: '19px' }}>Join us in bringing private, on-device tutoring to the families priced out of it.</p>
+<Buttons />
+<p style={{ margin: 0, paddingTop: '18px', borderTop: '1px solid #E0D8C8', alignSelf: 'stretch', fontWeight: '600', color: '#123C69' }}>Patrick Jackson, Founder &amp; System Architect · <a href="mailto:invest@cleophis.com">invest@cleophis.com</a></p>
 </div>
 </section>
 
