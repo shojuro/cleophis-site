@@ -98,7 +98,7 @@ export default function DownloadPage() {
 <p role="alert" style={{ margin: '0', color: '#A3261C', fontWeight: '600' }}>Enter your email address.</p>
 </>)}
 <button type="button" onClick={send} className="btn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', minHeight: '56px', padding: '0 28px', border: '0', borderRadius: '12px', background: '#A83A5C', color: '#FFFFFF', font: '600 18px var(--font-sans), system-ui, sans-serif', cursor: 'pointer' }}>{cta}</button>
-<span style={{ fontSize: '15px', color: '#5C6470' }}>One email. No newsletter.</span>
+<span style={{ fontSize: '15px', color: '#5C6470' }}>A thank-you now, then one email when it is ready. No newsletter.</span>
 </div>
 </>)}
 {sent && (<>

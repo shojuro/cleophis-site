@@ -5,6 +5,8 @@
 // to the server console only — fine for local dev, but wire Supabase
 // before driving real traffic or signups only live in ephemeral logs.
 
+import { sendThanks } from '../../../lib/thanks';
+
 export async function POST(request) {
   let data;
   try {
@@ -36,7 +38,8 @@ export async function POST(request) {
           apikey: key,
           Authorization: `Bearer ${key}`,
           'Content-Type': 'application/json',
-          Prefer: 'resolution=ignore-duplicates',
+          // return=representation tells us whether this address is new (one row) or a repeat (none).
+          Prefer: 'resolution=ignore-duplicates,return=representation',
         },
         body: JSON.stringify(row),
       });
@@ -44,6 +47,21 @@ export async function POST(request) {
       if (!res.ok && res.status !== 409) {
         console.error('[beta signup] Supabase error', res.status, await res.text());
         return Response.json({ ok: false, error: 'Storage error' }, { status: 502 });
+      }
+      // Thank a new address once. A sending problem never fails the signup itself.
+      const saved = res.ok ? await res.json().catch(() => []) : [];
+      if (Array.isArray(saved) && saved.length === 1) {
+        try {
+          if (await sendThanks({ email, name: row.name, role: row.role })) {
+            await fetch(`${url}/rest/v1/signups?id=eq.${saved[0].id}`, {
+              method: 'PATCH',
+              headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ thanked_at: new Date().toISOString() }),
+            });
+          }
+        } catch (err) {
+          console.error('[thanks email] failed', err);
+        }
       }
     } catch (err) {
       console.error('[beta signup] Supabase unreachable', err);
