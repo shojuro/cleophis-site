@@ -1,11 +1,11 @@
+import BrandMark from './BrandMark';
+
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <a href="/" className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandMark />
           Cleophis
         </a>
         <p className="footer-tag">Downloaded, not streamed.</p>

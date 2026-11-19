@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import BrandMark from './BrandMark';
 
 export default function Nav({ links, cta }) {
   const [scrolled, setScrolled] = useState(false);
@@ -17,9 +18,7 @@ export default function Nav({ links, cta }) {
     <header className={`nav ${scrolled ? 'scrolled' : ''} ${open ? 'open' : ''}`}>
       <div className="nav-inner">
         <a href="/" className="brand" onClick={() => setOpen(false)}>
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
+          <BrandMark />
           Cleophis
         </a>
 

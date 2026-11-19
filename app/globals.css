@@ -329,24 +329,24 @@ button {
 .brand-mark {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
-  background: var(--accent);
-  display: grid;
-  place-items: center;
+  display: block;
   flex: none;
 }
 
-.brand-mark span {
-  width: 12px;
-  height: 12px;
-  background: var(--white);
-  transform: rotate(45deg);
-  transition: transform 0.5s ease;
+/* the books rise one after another on hover */
+.brand-mark .bk {
+  transform-box: fill-box;
+  transition: transform 0.35s ease;
 }
 
-.brand:hover .brand-mark span {
-  transform: rotate(225deg);
+.brand:hover .brand-mark .bk {
+  transform: translateY(-2px);
 }
+
+.brand-mark .bk2 { transition-delay: 0.04s; }
+.brand-mark .bk3 { transition-delay: 0.08s; }
+.brand-mark .bk4 { transition-delay: 0.12s; }
+.brand-mark .bk5 { transition-delay: 0.16s; }
 
 .nav-links {
   display: flex;
@@ -1554,11 +1554,6 @@ button {
 .footer .brand-mark {
   width: 28px;
   height: 28px;
-}
-
-.footer .brand-mark span {
-  width: 10px;
-  height: 10px;
 }
 
 .footer-tag {
