@@ -1,4 +1,3 @@
-import './globals.css';
 import { Inter, Source_Serif_4 } from 'next/font/google';
 
 const sans = Inter({
@@ -10,7 +9,8 @@ const sans = Inter({
 const serif = Source_Serif_4({
   subsets: ['latin'],
   variable: '--font-serif',
-  weight: ['600', '700'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
   display: 'swap',
 });
 

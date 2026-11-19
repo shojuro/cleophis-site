@@ -1,413 +1,217 @@
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
-import Reveal from '../components/Reveal';
-import EmailCapture from '../components/EmailCapture';
-import HeroChat from '../components/HeroChat';
-import ScrollFx from '../components/ScrollFx';
+import './site.css';
 
-const NAV_LINKS = [
-  ['#why', 'Why Cleophis'],
-  ['#privacy', 'Privacy'],
-  ['#subjects', 'Subjects'],
-  ['#pricing', 'Pricing'],
-  ['/investors', 'Investors'],
-];
-
-// The installer is hosted in the Backblaze B2 bucket "cleophis-downloads-1" under the
-// fixed name CleophisSetup.msi. To release a new build, upload it to the bucket with the
-// same name; the site needs no change. NEXT_PUBLIC_MSI_URL overrides the address.
-// Set MSI_READY = false to fall back to the email-capture buttons.
-const MSI_READY = true;
-const MSI_HREF =
-  process.env.NEXT_PUBLIC_MSI_URL ||
-  'https://f005.backblazeb2.com/file/cleophis-downloads-1/CleophisSetup.msi';
-// Shown beside download buttons until the installer is code-signed. Remove once it is.
-const SMARTSCREEN_NOTE =
-  'Cleophis is new, so Windows may show a “Windows protected your PC” box when you open the installer. Choose More info, then Run anyway.';
-const CTA_HREF = MSI_READY ? MSI_HREF : '#download';
-const CTA_LABEL = MSI_READY ? 'Download for Windows' : 'Get early access';
-
-const TRIO = [
-  {
-    title: 'Endlessly patient',
-    desc: 'It explains again — a new way each time — without sighing, judging, or charging by the hour.',
-  },
-  {
-    title: 'Works anywhere',
-    desc: 'Kitchen table, long car rides, spotty Wi-Fi. The tutor is on the device, so it just works.',
-  },
-  {
-    title: 'One quiet price',
-    desc: '$10 a month. No hourly rates, no surprise fees, and you can cancel whenever you like.',
-  },
-];
-
-const FAQ = [
-  {
-    q: 'What does it run on?',
-    a: 'Any Windows PC with at least 4 GB of memory. Android is on the way, with more platforms after that.',
-  },
-  {
-    q: 'Is it really private?',
-    a: 'Yes — in the way that matters. The tutoring happens entirely on your device, and what your child says to the tutor is never sent anywhere. Your account only handles sign-in, family profiles, and billing — it can’t see the conversations.',
-  },
-  {
-    q: 'Why is there an account?',
-    a: 'Two reasons: it unlocks your subscription, and it gives everyone in the house their own space. Mom, dad, and each kid can have their own tutor, their own subjects, and their own conversations — separate and private.',
-  },
-  {
-    q: 'Does it just hand over answers?',
-    a: 'It’s built to teach — walking through problems step by step and checking understanding along the way, the way a good tutor would.',
-  },
-  {
-    q: 'When does it need the internet?',
-    a: 'To download the app, to sign in, and to add new subject tutors. The tutoring itself runs fully offline. And if you’ve signed in on a device before, it remembers you — you can get back in even without a connection.',
-  },
-  {
-    q: 'What does it cost?',
-    a: '$10 a month, inside the app, after you install. Installing is free, and you can cancel anytime.',
-  },
-];
+export const metadata = {
+  title: 'Cleophis — An Offline Tutor on Your Student’s Own Device',
+  description:
+    'A patient tutor that runs on your own computer. Works without internet, and what your student types never leaves the device. $10 a month.',
+};
 
 export default function Home() {
   return (
-    <main id="top">
-      <ScrollFx />
-      <Nav links={NAV_LINKS} cta={{ href: CTA_HREF, label: MSI_READY ? 'Download' : 'Get early access' }} />
+<div style={{ background: '#FBF8F1', color: '#1E2A3A', fontFamily: 'var(--font-sans), system-ui, sans-serif', fontSize: '17px', lineHeight: '1.6' }}>
 
-      {/* ================= HERO ================= */}
-      <section className="hero">
-        <div className="float-d" style={{ width: 20, height: 20, top: '20%', left: '4%' }} />
-        <div className="float-d" style={{ width: 12, height: 12, top: '70%', left: '9%', animationDelay: '-5s' }} />
+<div className="prog" aria-hidden="true"></div>
+<div className="ribbon" aria-hidden="true"></div>
+<header className="hdr" style={{ borderBottom: '1px solid #E0D8C8', background: 'rgba(251, 248, 241, 0.88)' }}>
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '12px 24px', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px 24px' }}>
+<a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', minHeight: '44px', textDecoration: 'none' }}><svg className="crown" role="img" aria-label="Cleophis mark: a crown made of standing books" width="36" height="36" viewBox="0 0 64 64" style={{ flex: 'none' }}><rect x="8" y="23" width="8" height="25" rx="1.6" fill="#123C69"></rect><rect x="18" y="31" width="8" height="17" rx="1.6" fill="#123C69"></rect><rect x="28" y="17" width="8" height="31" rx="1.6" fill="#123C69"></rect><rect x="38" y="31" width="8" height="17" rx="1.6" fill="#123C69"></rect><rect x="48" y="23" width="8" height="25" rx="1.6" fill="#123C69"></rect><circle cx="12" cy="16.5" r="3.4" fill="#B08A3E"></circle><circle cx="32" cy="10" r="3.8" fill="#B08A3E"></circle><circle cx="52" cy="16.5" r="3.4" fill="#B08A3E"></circle><rect x="6" y="50.5" width="52" height="5.5" rx="1.6" fill="#B08A3E"></rect></svg><span style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: '26px', color: '#123C69' }}>Cleophis</span></a>
+<nav aria-label="Main" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 6px' }}>
+<a href="#why" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Why Cleophis</a>
+<a href="#privacy" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Privacy</a>
+<a href="#subjects" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Subjects</a>
+<a href="#pricing" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Pricing</a>
+<a href="/investors" className="nl" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 12px', color: '#465060', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Investors</a>
+<a href="/download" className="btn" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 18px', borderRadius: '10px', background: '#A83A5C', color: '#FFFFFF', textDecoration: 'none', fontSize: '16px', fontWeight: '600' }}>Download</a>
+</nav>
+</div>
+</header>
 
-        <div className="container hero-grid">
-          <div>
-            <Reveal>
-              <span className="hero-badge">
-                <span className="diamond" aria-hidden="true" />
-                {MSI_READY ? 'Available now · Windows' : 'Early access · Windows'}
-              </span>
-            </Reveal>
-            <Reveal delay={100}>
-              <h1>A patient tutor for your kid. Right on your device.</h1>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="hero-sub">
-                Cleophis lives on your computer — not in the cloud. It explains, step by step, as
-                many times as your kid needs. Once it’s set up, tutoring needs no internet —{' '}
-                <strong>and nothing your kid says ever leaves home.</strong> Ten dollars a month.
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
-              <div className="hero-ctas">
-                <a href={CTA_HREF} className="btn btn-primary" download={MSI_READY ? true : undefined}>
-                  {CTA_LABEL}
-                  <span className="arr" aria-hidden="true">{MSI_READY ? '↓' : '→'}</span>
-                </a>
-                <a href="#why" className="btn btn-ghost">
-                  Why families choose it
-                </a>
-              </div>
-            </Reveal>
-            <Reveal delay={400}>
-              <p className="dl-note">For Windows PCs with 4 GB of memory or more · Android on the way</p>
-              {MSI_READY && <p className="dl-note">{SMARTSCREEN_NOTE}</p>}
-            </Reveal>
-          </div>
+<section id="top" style={{ background: '#F1EBDF' }}>
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '72px 24px 80px', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '48px 56px' }}>
+<div style={{ flex: '1 1 460px', minWidth: '0', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '22px' }}>
+<span className="load d1" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '999px', background: '#FBF8F1', border: '1px solid #E0D8C8', fontSize: '14px', fontWeight: '600', color: '#465060' }}><span aria-hidden="true" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#B08A3E' }}></span>Available now for Windows</span>
+<h1 className="load d2" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(38px, 5vw, 60px)', lineHeight: '1.08', letterSpacing: '-0.01em', color: '#123C69', textWrap: 'balance' }}>An offline tutor on your student’s own device. $10 a month.</h1>
+<p className="load d3" style={{ margin: '0', fontSize: '19px', color: '#465060', textWrap: 'pretty' }}>Works without internet. <strong style={{ color: '#1E2A3A' }}>What your student types never leaves the device.</strong> Cancel anytime. Type the problem, snap a photo of it, or ask from your own materials. Cleophis explains step by step, as many times as it takes, until your student reaches the answer on their own.</p>
+<div className="load d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+<a href="/download" className="btn" style={{ display: 'flex', alignItems: 'center', gap: '8px', minHeight: '52px', padding: '0 24px', borderRadius: '12px', background: '#A83A5C', color: '#FFFFFF', textDecoration: 'none', fontWeight: '600' }}>Download for Windows <span className="arr arrd" aria-hidden="true">↓</span></a>
+<a href="#why" className="btn2" style={{ display: 'flex', alignItems: 'center', minHeight: '52px', padding: '0 22px', borderRadius: '12px', border: '1px solid #C9BFAE', background: '#FBF8F1', color: '#1E2A3A', textDecoration: 'none', fontWeight: '600' }}>Why families choose it</a>
+</div>
+<p className="load d5" style={{ margin: '0', fontSize: '15px', color: '#5C6470' }}>Windows 10 or newer · 4 GB of memory or more · Free to install · Mac, Linux and Android on the way</p>
+</div>
 
-          <Reveal delay={250} variant="zoom">
-            <HeroChat />
-          </Reveal>
-        </div>
-      </section>
+<div className="heroCard load d3" style={{ flex: '1 1 400px', minWidth: '0', display: 'flex', flexDirection: 'column', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 18px 40px rgba(30, 42, 58, 0.12)' }}>
+<div className="drop" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: '6px', height: '250px', padding: '0 24px', backgroundColor: '#E7DFD0', backgroundImage: 'linear-gradient(to bottom, rgba(8, 10, 14, 0.18), rgba(8, 10, 14, 0) 45%)' }}>
+<div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '64px', height: '214px', opacity: '1', backgroundColor: '#8E2F4F', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>Algebra I</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '70px', height: '226px', opacity: '0.5', backgroundColor: '#1F4B7A', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>Pre-Algebra</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '60px', height: '198px', opacity: '0.5', backgroundColor: '#2F5D4A', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>Geometry</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '58px', height: '206px', opacity: '0.5', backgroundColor: '#4A4F6A', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>SAT Math</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '54px', height: '186px', opacity: '0.5', backgroundColor: '#1D5560', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>English</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div>
+</div>
+<div aria-hidden="true" style={{ height: '14px', background: '#A07C4A', borderBottom: '4px solid #7A5C32', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.22)' }}></div>
+<div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '20px 22px 22px' }}>
+<div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+<span style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Cleophis · Algebra I</span>
+<span style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '3px 12px', borderRadius: '999px', background: '#DCEFE3', color: '#1B5E40', fontSize: '14px', fontWeight: '600' }}><span aria-hidden="true" className="pulse" style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#1B5E40' }}></span>Local · offline</span>
+</div>
+<p className="m m1" style={{ alignSelf: 'flex-end', maxWidth: '85%', margin: '0', padding: '10px 16px', borderRadius: '16px 16px 4px 16px', background: '#E4EAF1' }}>2x + 5 = 17. Can you just tell me the answer?</p>
+<div className="m m2" style={{ display: 'flex', flexDirection: 'column' }}><span style={{ fontSize: '13px', fontWeight: '600', color: '#123C69' }}>Tutor</span><span className="swap"><span className="dots" aria-hidden="true"><span></span><span></span><span></span></span><span className="say">I could, but you are closer than you think. What would you undo first?</span></span></div>
+<p className="m m3" style={{ alignSelf: 'flex-end', maxWidth: '85%', margin: '0', padding: '10px 16px', borderRadius: '16px 16px 4px 16px', background: '#E4EAF1' }}>The + 5?</p>
+<div className="m m4" style={{ display: 'flex', flexDirection: 'column' }}><span style={{ fontSize: '13px', fontWeight: '600', color: '#123C69' }}>Tutor</span><span className="swap"><span className="dots" aria-hidden="true"><span></span><span></span><span></span></span><span className="say">Yes. Subtract 5 from both sides. What is left?</span></span></div>
+</div>
+</div>
+</div>
+</section>
 
-      {/* ================= WHY ================= */}
-      <section className="section" id="why">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Why Cleophis
-            </div>
-          </Reveal>
-          <Reveal delay={100} variant="blur">
-            <h2 className="headline">Gentle help, whenever homework happens.</h2>
-          </Reveal>
+<section id="why">
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>Why Cleophis</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69' }}>Gentle help, whenever homework happens.</h2>
+</div>
+<div className="stag" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '20px' }}>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '26px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><span aria-hidden="true" className="rule" style={{ width: '36px', height: '3px', background: '#B08A3E' }}></span><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '23px' }}>Endlessly patient</h3><p style={{ margin: '0', color: '#465060' }}>It explains again — a new way each time — without sighing, judging, or charging by the hour.</p></div>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '26px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><span aria-hidden="true" className="rule" style={{ width: '36px', height: '3px', background: '#B08A3E' }}></span><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '23px' }}>Works anywhere</h3><p style={{ margin: '0', color: '#465060' }}>Kitchen table, long car rides, spotty Wi-Fi. The tutor is on the device, so it just works.</p></div>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '26px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><span aria-hidden="true" className="rule" style={{ width: '36px', height: '3px', background: '#B08A3E' }}></span><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '23px' }}>One quiet price</h3><p style={{ margin: '0', color: '#465060' }}>$10 a month. No hourly rates, no surprise fees, and you can cancel whenever you like.</p></div>
+</div>
+</div>
+</section>
 
-          <div className="trio">
-            {TRIO.map((t, i) => (
-              <Reveal key={t.title} delay={i * 120} variant="zoom">
-                <div className="trio-item">
-                  <span className="diamond" aria-hidden="true" />
-                  <h3>{t.title}</h3>
-                  <p>{t.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+<section id="privacy" style={{ background: '#123C69', color: '#FBF8F1' }}>
+<div style={{ maxWidth: '860px', margin: '0 auto', padding: '84px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#E3C98A' }}>Privacy</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15' }}>Their questions never leave the house.</h2>
+<p style={{ margin: '0', fontSize: '19px', color: '#E9E3D6', textWrap: 'pretty' }}>What your student types never leaves the device. The tutor runs on your own computer, so their questions, homework and conversations have nowhere else to go. The app never reports back to us on how it is used. Your account is only a key: it signs you in and manages your subscription.</p>
+<div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px 16px' }}>
+<svg className="wifi" aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#E3C98A" strokeWidth="2" strokeLinecap="round" style={{ flex: 'none' }}><path className="a3" d="M2.5 9a14 14 0 0 1 19 0"></path><path className="a2" d="M5.5 12.5a9.5 9.5 0 0 1 13 0"></path><path className="a1" d="M8.5 16a5 5 0 0 1 7 0"></path><circle cx="12" cy="19.5" r="1.2" fill="#E3C98A" stroke="none"></circle><path className="sl" d="M3 3l18 18" stroke="#FBF8F1"></path></svg>
+<p style={{ margin: '0', fontSize: '19px', fontWeight: '600' }}>The proof: turn off your Wi-Fi. It still works.</p>
+<span className="still" style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '3px 12px', borderRadius: '999px', background: '#DCEFE3', color: '#1B5E40', fontSize: '14px', fontWeight: '600' }}><span aria-hidden="true" className="pulse" style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#1B5E40' }}></span>Still tutoring</span>
+</div>
+<p style={{ margin: '0', paddingTop: '18px', borderTop: '1px solid rgba(227, 201, 138, 0.45)', fontWeight: '600', color: '#E3C98A' }}>Conversations stay on-device · No tracking · No usage reports</p>
+</div>
+</section>
 
-      {/* ================= PRIVACY ================= */}
-      <section className="section privacy" id="privacy">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Privacy
-            </div>
-          </Reveal>
-          <Reveal delay={100} variant="blur">
-            <h2 className="headline">What happens at home, stays home.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub privacy-lead">
-              Your child’s questions, homework, and conversations never leave your device — the
-              tutoring has nothing to send. Your account is just a key: it signs you in, keeps each
-              family member’s tutor separate, and manages your subscription. It can’t see what’s
-              said. What happens between your kid and their tutor stays on the machine.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <p className="quiet-list">
-              Conversations stay on-device · No tracking · A profile for everyone in the house
-            </p>
-          </Reveal>
-        </div>
-      </section>
+<section id="local" style={{ background: '#F1EBDF' }}>
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '40px 56px' }}>
+<div className="fromL" style={{ flex: '1 1 480px', minWidth: '0', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>On your device</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69' }}>Downloaded, not streamed.</h2>
+<p style={{ margin: '0', color: '#465060', textWrap: 'pretty' }}>Most AI tutors live in a data center — your child reaches them through the internet, and their questions travel with them. Cleophis works the way software used to: you download it, and it’s yours. The tutor itself — the AI — is installed on your computer, sized to fit the memory it has. That’s why tutoring works with no Wi-Fi, and why the conversations never leave the house.</p>
+</div>
+<div style={{ flex: '1 1 320px', minWidth: '0', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+<div className="card fromR" style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '22px 24px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '14px' }}><span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5C6470' }}>Cloud AI</span><p style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontSize: '21px' }}>Questions travel to someone else’s computer.</p><span className="trk out" aria-hidden="true"><span className="pk"></span></span></div>
+<div className="card fromR" style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '22px 24px', background: '#123C69', color: '#FBF8F1', borderRadius: '14px' }}><span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#E3C98A' }}>Cleophis</span><p style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontSize: '21px' }}>The tutor lives on yours.</p><span className="trk home" aria-hidden="true"><span className="pk"></span></span></div>
+</div>
+</div>
+</section>
 
-      {/* ================= WHAT'S A LOCAL TUTOR ================= */}
-      <section className="section" id="local">
-        <div className="container explain-grid">
-          <div>
-            <Reveal variant="left">
-              <div className="kicker">
-                <span className="diamond" aria-hidden="true" />
-                On your device
-              </div>
-            </Reveal>
-            <Reveal delay={100} variant="left">
-              <h2 className="headline">Downloaded, not streamed.</h2>
-            </Reveal>
-            <Reveal delay={200} variant="left">
-              <p className="sub">
-                Most AI tutors live in a data center — your child reaches them through the
-                internet, and their questions travel with them. Cleophis works the way software
-                used to: you download it, and it’s yours. The tutor itself — the AI — is installed
-                on your computer, sized to fit the memory it has. That’s why tutoring works with no
-                Wi-Fi, and why the conversations never leave the house.
-              </p>
-            </Reveal>
-          </div>
-          <div className="explain-cards">
-            <Reveal delay={200} variant="right">
-              <div className="card explain-card">
-                <div className="explain-label">Cloud AI</div>
-                <p className="card-desc">Questions travel to someone else’s computer.</p>
-              </div>
-            </Reveal>
-            <Reveal delay={320} variant="right">
-              <div className="card explain-card explain-card-us">
-                <div className="explain-label explain-label-us">Cleophis</div>
-                <p className="card-desc">The tutor lives on yours.</p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+<section id="library">
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+<div style={{ maxWidth: '760px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>Your study space</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69' }}>Their books, their notes, their tutor.</h2>
+<p style={{ margin: '0', color: '#465060' }}>Cleophis isn’t just a chat window — it’s a private study space your family fills with its own materials. And like everything else, it all stays on the device.</p>
+</div>
+<div className="stag" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))', gap: '20px' }}>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '24px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Teach it from your own books</h3><p style={{ margin: '0', fontSize: '16px', color: '#465060' }}>Turn your materials into knowledge packs. The tutor answers from them and cites its sources — or says honestly when the answer isn’t in there.</p></div>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '24px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Bring your files</h3><p style={{ margin: '0', fontSize: '16px', color: '#465060' }}>PDFs, Word docs, EPUBs, text and notes — if it’s readable, it can join the library.</p></div>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '24px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Private folders</h3><p style={{ margin: '0', fontSize: '16px', color: '#465060' }}>Keep chats organized by kid, class, or project — with search, and archive for when things pile up.</p></div>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '24px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}><h3 style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Your chats, yours to keep</h3><p style={{ margin: '0', fontSize: '16px', color: '#465060' }}>Export any conversation whenever you like. Nothing is locked in — because nothing ever left your device.</p></div>
+</div>
+</div>
+</section>
 
-      {/* ================= YOUR STUDY SPACE ================= */}
-      <section className="section darksec" id="library">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Your study space
-            </div>
-          </Reveal>
-          <Reveal delay={100} variant="blur">
-            <h2 className="headline">Their books, their notes, their tutor.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub">
-              Cleophis isn’t just a chat window — it’s a private study space your family fills with
-              its own materials. And like everything else, it all stays on the device.
-            </p>
-          </Reveal>
+<section id="subjects" style={{ background: '#F1EBDF' }}>
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '40px 56px' }}>
+<div className="fromL" style={{ flex: '1 1 440px', minWidth: '0', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>Subjects</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69' }}>Built subject by subject — on purpose.</h2>
+<p style={{ margin: '0', color: '#465060' }}>Each subject is its own specialist — a tutor trained for that topic, not a jack-of-all-trades stretched thin. The library keeps growing, and every tutor in it is part of the same subscription.</p>
+<p style={{ margin: '0', fontSize: '15px', color: '#5C6470' }}>On the shelf now: Algebra I. Coming next: Pre-Algebra, Geometry, SAT Math and English.</p>
+</div>
+<div className="depth fromR" style={{ flex: '1 1 400px', minWidth: '0', display: 'flex', flexDirection: 'column', borderRadius: '14px', overflow: 'hidden', border: '1px solid #E0D8C8' }}>
+<div className="shelve" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: '6px', height: '270px', padding: '0 24px', backgroundColor: '#E7DFD0', backgroundImage: 'linear-gradient(to bottom, rgba(8, 10, 14, 0.18), rgba(8, 10, 14, 0) 45%)' }}>
+<div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '64px', height: '214px', opacity: '1', backgroundColor: '#8E2F4F', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>Algebra I</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '70px', height: '226px', opacity: '0.5', backgroundColor: '#1F4B7A', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>Pre-Algebra</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '60px', height: '198px', opacity: '0.5', backgroundColor: '#2F5D4A', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>Geometry</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '58px', height: '206px', opacity: '0.5', backgroundColor: '#4A4F6A', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>SAT Math</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div><div className="spine" style={{ flex: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', boxSizing: 'border-box', padding: '12px 0', borderRadius: '4px 4px 1px 1px', color: '#FBF8F1', width: '54px', height: '186px', opacity: '0.5', backgroundColor: '#1D5560', backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 16%, rgba(8, 10, 14, 0) 46%, rgba(8, 10, 14, 0.3) 100%)', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.2), 2px 0 0 rgba(8, 10, 14, 0.28), 0 8px 10px -5px rgba(8, 10, 14, 0.55)' }}><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span><span className="vt" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '17px' }}>English</span><span aria-hidden="true" style={{ width: '70%', height: '2px', background: '#E3C98A' }}></span></div>
+</div>
+<div aria-hidden="true" style={{ height: '14px', background: '#A07C4A', borderBottom: '4px solid #7A5C32', boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.22)' }}></div>
+</div>
+</div>
+</section>
 
-          <div className="grid4">
-            <Reveal delay={0} variant="zoom">
-              <div className="inv-chip">
-                <div className="inv-chip-title">Teach it from your own books</div>
-                <p className="inv-chip-desc">
-                  Turn your materials into knowledge packs. The tutor answers from them and cites
-                  its sources — or says honestly when the answer isn’t in there.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={110} variant="zoom">
-              <div className="inv-chip">
-                <div className="inv-chip-title">Bring your files</div>
-                <p className="inv-chip-desc">
-                  PDFs, Word docs, EPUBs, text and notes — if it’s readable, it can join the
-                  library.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={220} variant="zoom">
-              <div className="inv-chip">
-                <div className="inv-chip-title">Private folders</div>
-                <p className="inv-chip-desc">
-                  Keep chats organized by kid, class, or project — with search, and archive for
-                  when things pile up.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={330} variant="zoom">
-              <div className="inv-chip">
-                <div className="inv-chip-title">Your chats, yours to keep</div>
-                <p className="inv-chip-desc">
-                  Export any conversation whenever you like. Nothing is locked in — because nothing
-                  ever left your device.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+<section id="pricing">
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', textAlign: 'center' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>Pricing</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69' }}>Tutoring, without the tutoring bill.</h2>
+</div>
+<div className="card rise pc" style={{ width: '100%', maxWidth: '460px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '18px', padding: '32px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderTop: '4px solid #B08A3E', borderRadius: '14px' }}>
+<span className="strike" style={{ color: '#5C6470', textDecoration: 'line-through' }}>$60/hour with a human tutor</span>
+<div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '10px' }}><span role="img" aria-label="10 dollars" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: '64px', lineHeight: '1', color: '#123C69' }}>$<span className="num">10</span></span><span style={{ color: '#465060' }}>/month · everything included</span></div>
+<ul style={{ margin: '0', padding: '0', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+<li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5E40" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', marginTop: '4px' }}><path d="M5 12l5 5 9-10"></path></svg><span>Unlimited questions, 24/7</span></li><li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5E40" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', marginTop: '4px' }}><path d="M5 12l5 5 9-10"></path></svg><span>Every student subject, current and future</span></li><li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5E40" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', marginTop: '4px' }}><path d="M5 12l5 5 9-10"></path></svg><span>Works fully offline</span></li><li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5E40" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', marginTop: '4px' }}><path d="M5 12l5 5 9-10"></path></svg><span>Nothing leaves your device</span></li><li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5E40" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', marginTop: '4px' }}><path d="M5 12l5 5 9-10"></path></svg><span>One price for the whole family</span></li><li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5E40" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', marginTop: '4px' }}><path d="M5 12l5 5 9-10"></path></svg><span>30-day money-back promise. Cancel anytime.</span></li>
+</ul>
+<a href="/download" className="btn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', minHeight: '52px', borderRadius: '12px', background: '#A83A5C', color: '#FFFFFF', textDecoration: 'none', fontWeight: '600' }}>Download for Windows <span className="arr arrd" aria-hidden="true">↓</span></a>
+<p style={{ margin: '0', textAlign: 'center', fontSize: '15px', color: '#5C6470' }}>Free to install. You pay inside the app when you pick your first subject.</p>
+<p className="gilt" style={{ margin: '0', padding: '12px 14px', border: '1px solid #B08A3E', borderRadius: '10px', textAlign: 'center', fontSize: '15px', fontWeight: '600', color: '#123C69' }}>Founding families: the first 100 to subscribe pay $5 a month for as long as they stay subscribed. Applied automatically in the app.</p>
+</div>
+</div>
+</section>
 
-      {/* ================= SUBJECTS ================= */}
-      <section className="section privacy" id="subjects">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Subjects
-            </div>
-          </Reveal>
-          <Reveal delay={100} variant="blur">
-            <h2 className="headline">Built subject by subject — on purpose.</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="sub">
-              Each subject is its own specialist — a tutor trained for that topic, not a
-              jack-of-all-trades stretched thin. The library keeps growing, and every tutor in it
-              is part of the same subscription.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <div className="tag-row">
-              <span className="tag tag-live">Algebra II</span>
-              <span className="tag tag-live">AP Biology</span>
-              <span className="tag tag-live">Essay writing</span>
-              <span className="tag">SAT · ACT prep — soon</span>
-              <span className="tag">Coding — soon</span>
-              <span className="tag">More on the way</span>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+<section id="founder">
+<div style={{ maxWidth: '960px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '18px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>Who built it</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69', textWrap: 'balance' }}>Patrick Jackson, founder. The teacher and the builder are the same person.</h2>
+<svg className="ink" aria-hidden="true" width="260" height="14" viewBox="0 0 260 14" fill="none" style={{ marginTop: '-10px' }}><path pathlength="1" d="M3 9c40-7 78 5 120-1s82-5 134 1" stroke="#B08A3E" strokeWidth="3" strokeLinecap="round"></path></svg>
+<p style={{ margin: '0', fontSize: '19px', color: '#465060', textWrap: 'pretty' }}>I have taught and tutored students from kindergarten to age 77, and I have seen what extra one-on-one help does for a student. I have also watched children’s privacy get traded away to provide it. Cleophis is that extra help without the trade.</p>
+<div className="ages" role="img" aria-label="Students taught, from kindergarten at age 5 to age 77" style={{ position: 'relative', margin: '8px 0 4px', padding: '58px 48px 54px', background: '#F1EBDF', border: '1px solid #E0D8C8', borderRadius: '14px' }}>
+<div style={{ position: 'relative', height: '8px', borderRadius: '999px', background: '#E0D8C8' }}>
+<span className="fill" aria-hidden="true" style={{ position: 'absolute', inset: '0', borderRadius: '999px', background: 'linear-gradient(90deg, #B08A3E, #A83A5C)' }}></span>
+<span className="stop" style={{ left: '0.0%' }}><span className="dot" aria-hidden="true"></span><span className="lbl">Kindergarten</span></span><span className="stop" style={{ left: '16.67%' }}><span className="dot" aria-hidden="true"></span><span className="lbl mid">Elementary</span></span><span className="stop" style={{ left: '33.33%' }}><span className="dot" aria-hidden="true"></span><span className="lbl mid">Middle school</span></span><span className="stop" style={{ left: '50.0%' }}><span className="dot" aria-hidden="true"></span><span className="lbl">High school</span></span><span className="stop" style={{ left: '66.67%' }}><span className="dot" aria-hidden="true"></span><span className="lbl mid">College</span></span><span className="stop" style={{ left: '83.33%' }}><span className="dot" aria-hidden="true"></span><span className="lbl mid">Adult learners</span></span><span className="stop" style={{ left: '100.0%' }}><span className="dot" aria-hidden="true"></span><span className="lbl">Age 77</span></span>
+<span className="who" aria-hidden="true" style={{ position: 'absolute', bottom: '20px', left: '100%', translate: '-50% 0', display: 'flex', alignItems: 'baseline', gap: '5px', padding: '5px 14px', borderRadius: '999px', background: '#123C69', color: '#FBF8F1', fontSize: '14px', fontWeight: '600', whiteSpace: 'nowrap' }}>age <span className="agen" style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontSize: '22px', fontWeight: '700', color: '#E3C98A' }}>77</span></span>
+</div>
+</div>
+<div className="stag" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '20px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '14px' }}><h3 style={{ margin: '0', fontSize: '18px', fontWeight: '600', color: '#983154' }}>Educator &amp; Builder</h3><p style={{ margin: '0', color: '#465060' }}>10 years classroom teaching, 5 years private tutoring, and built the working offline tutor solo.</p></div>
+<div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '20px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '14px' }}><h3 style={{ margin: '0', fontSize: '18px', fontWeight: '600', color: '#983154' }}>Field IT &amp; Operations</h3><p style={{ margin: '0', color: '#465060' }}>Former U.S. military IT lead (deployed 2,000+ hospital and clinic computers) and forward-deployed Marine Expeditionary Unit medical logistics coordinator.</p></div>
+</div>
+<p style={{ margin: '0', color: '#1E2A3A' }}>Write to Patrick: <a href="mailto:cleophis.actual@cleophis.com">cleophis.actual@cleophis.com</a></p>
+</div>
+</section>
 
-      {/* ================= PRICING ================= */}
-      <section className="section pricing-sec" id="pricing">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Pricing
-            </div>
-          </Reveal>
-          <Reveal delay={100} variant="blur">
-            <h2 className="headline">Tutoring, without the tutoring bill.</h2>
-          </Reveal>
+<section id="faq" style={{ background: '#F1EBDF' }}>
+<div style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+<span style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#983154' }}>Common questions</span>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(30px, 3.6vw, 42px)', lineHeight: '1.15', color: '#123C69' }}>Questions parents ask.</h2>
+</div>
+<div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+<details className="faq" style={{ padding: '4px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>What does it run on?</summary><p style={{ margin: '0', padding: '0 0 18px', color: '#465060' }}>Any PC with Windows 10 or newer and at least 4 GB of memory. Mac, Linux and Android are on the way.</p></details><details className="faq" style={{ padding: '4px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Is it really private?</summary><p style={{ margin: '0', padding: '0 0 18px', color: '#465060' }}>Yes — in the way that matters. The tutoring happens entirely on your device, and what your child says to the tutor is never sent anywhere. Your account only handles sign-in, family profiles, and billing — it can’t see the conversations.</p></details><details className="faq" style={{ padding: '4px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Why is there an account?</summary><p style={{ margin: '0', padding: '0 0 18px', color: '#465060' }}>Two reasons: it unlocks your subscription, and it gives everyone in the house their own space. Mom, dad, and each kid can have their own tutor, their own subjects, and their own conversations — separate and private.</p></details><details className="faq" style={{ padding: '4px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>Does it just hand over answers?</summary><p style={{ margin: '0', padding: '0 0 18px', color: '#465060' }}>It’s built to teach — walking through problems step by step and checking understanding along the way, the way a good tutor would.</p></details><details className="faq" style={{ padding: '4px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>When does it need the internet?</summary><p style={{ margin: '0', padding: '0 0 18px', color: '#465060' }}>To download the app, to sign in, and to add new subject tutors. The tutoring itself runs fully offline. And if you’ve signed in on a device before, it remembers you — you can get back in even without a connection.</p></details><details className="faq" style={{ padding: '4px 22px', background: '#FBF8F1', border: '1px solid #E0D8C8', borderRadius: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '600', fontSize: '20px' }}>What does it cost?</summary><p style={{ margin: '0', padding: '0 0 18px', color: '#465060' }}>$10 a month for the whole family. Installing is free; you pay inside the app when you pick your first subject. The first 100 families to subscribe pay $5 a month for as long as they stay subscribed. There is a 30-day money-back promise, and you can cancel anytime.</p></details>
+</div>
+</div>
+</section>
 
-          <Reveal delay={200} variant="zoom">
-            <div className="price-card">
-              <div className="compare">
-                <span className="strike">$60/hour with a human tutor</span>
-              </div>
-              <div className="price-line">
-                <span className="price-num">$10</span>
-                <span className="price-per">/month · everything included</span>
-              </div>
-              <ul className="price-list">
-                <li>Unlimited questions, 24/7</li>
-                <li>Every subject, current and future</li>
-                <li>Works fully offline</li>
-                <li>Nothing leaves your device</li>
-                <li>Cancel anytime</li>
-              </ul>
-              <a href={CTA_HREF} className="btn btn-primary" download={MSI_READY ? true : undefined}>
-                {CTA_LABEL}
-                <span className="arr" aria-hidden="true">{MSI_READY ? '↓' : '→'}</span>
-              </a>
-              <p className="dl-note">Free to install, subscribe in-app</p>
-              {MSI_READY && <p className="dl-note">{SMARTSCREEN_NOTE}</p>}
-            </div>
-          </Reveal>
-        </div>
-      </section>
+<section id="download" style={{ background: '#123C69', color: '#FBF8F1', position: 'relative', overflow: 'hidden' }}>
+<span className="mote" aria-hidden="true" style={{ left: '9%', top: '26%', width: '18px', height: '18px' }}></span><span className="mote" aria-hidden="true" style={{ left: '84%', top: '18%', width: '26px', height: '26px', animationDelay: '-4s' }}></span><span className="mote" aria-hidden="true" style={{ left: '72%', top: '70%', width: '12px', height: '12px', animationDelay: '-7s' }}></span><span className="mote" aria-hidden="true" style={{ left: '20%', top: '74%', width: '10px', height: '10px', animationDelay: '-2s' }}></span>
+<div style={{ position: 'relative', maxWidth: '720px', margin: '0 auto', padding: '84px 24px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center' }}>
+<h2 className="rise" style={{ margin: '0', fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: 'clamp(32px, 4vw, 46px)', lineHeight: '1.12' }}>Homework gets easier tonight.</h2>
+<p style={{ margin: '0', fontSize: '19px', color: '#E3C98A', fontWeight: '600' }}>Private. Offline. $10 a month. Installed in a minute.</p>
+<p style={{ margin: '0', color: '#E9E3D6' }}>Free to install. You pay inside the app when you pick your first subject.</p>
+<a href="/download" className="btn" style={{ display: 'flex', alignItems: 'center', gap: '8px', minHeight: '54px', marginTop: '8px', padding: '0 28px', borderRadius: '12px', background: '#A83A5C', color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '600' }}>Download for Windows <span className="arr arrd" aria-hidden="true">↓</span></a>
+<p style={{ margin: '0', fontSize: '15px', color: '#E3C98A' }}>The first 100 families pay $5 a month. 30-day money-back promise.</p>
+</div>
+</section>
 
-      {/* ================= FAQ ================= */}
-      <section className="section privacy" id="faq">
-        <div className="container">
-          <Reveal>
-            <div className="kicker">
-              <span className="diamond" aria-hidden="true" />
-              Common questions
-            </div>
-          </Reveal>
-          <Reveal delay={100} variant="blur">
-            <h2 className="headline">Questions parents ask.</h2>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <div className="faq">
-              {FAQ.map((f) => (
-                <details key={f.q}>
-                  <summary>
-                    {f.q}
-                    <span className="faq-chev" aria-hidden="true" />
-                  </summary>
-                  <p className="faq-a">{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= FINAL CTA ================= */}
-      <section className="band" id="download">
-        <div className="container">
-          <Reveal variant="blur">
-            <h2 className="headline">Homework gets easier tonight.</h2>
-          </Reveal>
-          <Reveal delay={150}>
-            <p className="band-sub">Private. Offline. $10 a month. Installed in a minute.</p>
-          </Reveal>
-          {MSI_READY && (
-            <Reveal delay={250}>
-              <div className="band-ctas">
-                <a href={MSI_HREF} className="btn btn-primary" download>
-                  Download for Windows
-                  <span className="arr" aria-hidden="true">↓</span>
-                </a>
-              </div>
-            </Reveal>
-          )}
-          <Reveal delay={MSI_READY ? 350 : 250}>
-            <p className="band-capture-lead">
-              {MSI_READY
-                ? 'Not on Windows? Leave your email and we’ll tell you when Cleophis reaches your device.'
-                : 'The Windows download opens soon. Leave your email and we’ll send it to you the moment it’s ready.'}
-            </p>
-            <EmailCapture />
-          </Reveal>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+<footer style={{ background: '#FBF8F1', borderTop: '1px solid #E0D8C8' }}>
+<div style={{ maxWidth: '1160px', margin: '0 auto', padding: '36px 24px', boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px 32px' }}>
+<div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+<div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><svg role="img" aria-label="Cleophis mark: a crown made of standing books" width="32" height="32" viewBox="0 0 64 64" style={{ flex: 'none' }}><rect x="8" y="23" width="8" height="25" rx="1.6" fill="#123C69"></rect><rect x="18" y="31" width="8" height="17" rx="1.6" fill="#123C69"></rect><rect x="28" y="17" width="8" height="31" rx="1.6" fill="#123C69"></rect><rect x="38" y="31" width="8" height="17" rx="1.6" fill="#123C69"></rect><rect x="48" y="23" width="8" height="25" rx="1.6" fill="#123C69"></rect><circle cx="12" cy="16.5" r="3.4" fill="#B08A3E"></circle><circle cx="32" cy="10" r="3.8" fill="#B08A3E"></circle><circle cx="52" cy="16.5" r="3.4" fill="#B08A3E"></circle><rect x="6" y="50.5" width="52" height="5.5" rx="1.6" fill="#B08A3E"></rect></svg><span style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontWeight: '700', fontSize: '22px', color: '#123C69' }}>Cleophis</span></div>
+<span style={{ fontFamily: 'var(--font-serif), Georgia, serif', fontStyle: 'italic', color: '#5C6470' }}>Downloaded, not streamed.</span>
+</div>
+<nav aria-label="Footer" style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 8px' }}>
+<a href="/download" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Download</a>
+<a href="/co-ops" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>For co-ops</a>
+<a href="/investors" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>For investors</a>
+<a href="/download#code" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Have a code?</a>
+<a href="mailto:hello@cleophis.com" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Contact</a>
+</nav>
+<span style={{ fontSize: '14px', color: '#5C6470' }}>© 2026 Cleophis. All rights reserved.</span>
+</div>
+</footer>
+</div>
   );
 }
