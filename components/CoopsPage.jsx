@@ -97,6 +97,8 @@ export default function CoopsPage() {
 </div>
 <nav aria-label="Footer" style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 8px' }}>
 <a href="/download" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Download</a>
+<a href="/feedback" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Feedback</a>
+<a href="/privacy" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Privacy</a>
 <a href="/co-ops" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>For co-ops</a>
 <a href="/investors" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>For investors</a>
 <a href="/download#code" style={{ display: 'flex', alignItems: 'center', minHeight: '44px', padding: '0 10px', fontSize: '16px', fontWeight: '500' }}>Have a code?</a>
